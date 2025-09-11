@@ -1,0 +1,190 @@
+mapscripts EvergreenTown_MapScripts {}
+
+// Sign Scripts
+script EvergreenTown_SignScript_PlayerHouse
+{
+    lock
+    msgbox(format("{PLAYER}'s House..."))
+    release
+    end
+}
+
+script EvergreenTown_SignScript_RivalHouse
+{
+    lock
+    msgbox(format("Rival's House..."))
+    release
+    end
+}
+
+script EvergreenTown_SignScript_ProfessorsLab
+{
+    lock
+    msgbox(format("Professor Sequioa's Lab..."))
+    release
+    end
+}
+
+script EvergreenTown_SignScript_EvergreenSign
+{
+    lock
+    msgbox(format("Evergreen Town, a lush homey atmosphere."))
+    release
+    end
+}
+
+// NPC Scripts
+script EvergreenTown_NPCScript_OldMan
+{
+    lock
+    faceplayer
+    msgbox(format("Hello there, {PLAYER}! I can never get enough of how beautiful this town is.\pGood luck on your future endeavors!"))
+    release
+    end
+}
+
+script EvergreenTown_NPCScript_Beauty
+{
+    lock
+    faceplayer
+    msgbox(format("These flowers here are so pretty. I want to grow ones like these at my home."))
+    release
+    end
+}
+
+script EvergreenTown_NPCScript_Boy
+{
+    lock
+    faceplayer
+    if(!flag(FLAG_RECEIVED_EVERGREEN_POTION))
+    {
+        msgbox(format("I'm trying to surprise this girl over on the other side of town with these flowers I found, will you go away?"), MSGBOX_YESNO)
+        if(var(VAR_RESULT) == YES)
+        {
+            msgbox(format("Thanks.\pHere's a potion for your troubles..."))
+            giveitem(ITEM_POTION)
+            setflag(FLAG_RECEIVED_EVERGREEN_POTION)
+            applymovement(7, EvergreenTown_MovementScript_Boy)
+            waitmovement(0)
+        }
+        else
+        {
+            msgbox(format("Ugh!\pTake this and leave..."))
+            giveitem(ITEM_POTION)
+            setflag(FLAG_RECEIVED_EVERGREEN_POTION)
+            applymovement(7, EvergreenTown_MovementScript_Boy)
+            waitmovement(0)
+        }
+    }
+    else
+    {
+        msgbox("Stop bothering me.")
+        applymovement(7, EvergreenTown_MovementScript_Boy)
+        waitmovement(0)
+    }
+    release
+    end
+}
+
+script EvergreenTown_NPCScript_Fisherman
+{
+    lock
+    faceplayer
+    msgbox(format("Fishing here is so calming. I love coming here with my best buddy Wingull!"))
+    applymovement(4, EvergreenTown_MovementScript_Wingull)
+    waitmovement(0)
+    playmoncry(SPECIES_WINGULL, CRY_MODE_NORMAL)
+    waitmoncry
+    applymovement(3, EvergreenTown_MovementScript_Fisherman)
+    waitmovement(0)
+    msgbox(format("I'm glad to hear you agree buddy!"))
+    applymovement(4, EvergreenTown_MovementScript_Wingull2)
+    waitmovement(0)
+    applymovement(3, EvergreenTown_MovementScript_Fisherman2)
+    waitmovement(0)
+    msgbox(format("Isn't he the coolest?"))
+    applymovement(3, EvergreenTown_MovementScript_Fisherman3)
+    waitmovement(0)
+    release
+    end
+}
+
+// Trigger Scripts
+script EvergreenTown_TriggerScript_StampedeBlock
+{
+    lock
+    msgbox(format("I can't let you pass right now. There's been a stampede that's been wreaking havoc here. Once it's been routed, people can go through again."))
+    closemessage
+    applymovement(LOCALID_PLAYER, EvergreenTown_MovementScript_Player)
+    waitmovement(0)
+    release
+    end
+}
+
+script EvergreenTown_TriggerScript_StampedeBlock2
+{
+    lock
+    applymovement(8, EvergreenTown_MovementScript_AceTrainer)
+    waitmovement(0)
+    msgbox(format("I can't let you pass right now. There's been a stampede that's been wreaking havoc here. Once it's been routed, people can go through again."))
+    closemessage
+    applymovement(LOCALID_PLAYER, EvergreenTown_MovementScript_Player)
+    waitmovement(0)
+    applymovement(8, EvergreenTown_MovementScript_AceTrainer2)
+    waitmovement(0)
+    release
+    end
+}
+
+// Movement Scripts
+movement EvergreenTown_MovementScript_Wingull
+{
+    face_right
+}
+
+movement EvergreenTown_MovementScript_Wingull2
+{
+    face_down
+}
+
+movement EvergreenTown_MovementScript_Fisherman
+{
+    face_left
+}
+
+movement EvergreenTown_MovementScript_Fisherman2
+{
+    face_right
+}
+
+movement EvergreenTown_MovementScript_Fisherman3
+{
+    face_down
+}
+
+movement EvergreenTown_MovementScript_Boy
+{
+    face_left
+}
+
+movement EvergreenTown_MovementScript_Player
+{
+    walk_left
+}
+
+movement EvergreenTown_MovementScript_Player2
+{
+    walk_left * 2
+}
+
+movement EvergreenTown_MovementScript_AceTrainer
+{
+    walk_down
+    face_left
+}
+
+movement EvergreenTown_MovementScript_AceTrainer2
+{
+    walk_up
+    face_left
+}

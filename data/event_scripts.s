@@ -1158,3 +1158,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
 	.include "data/scripts/dexnav.inc"
+
+	.include "data/maps/EvergreenTown/scripts.inc"
+
+	.include "data/maps/EvergreenTown_PlayerHouse_1F/scripts.inc"
