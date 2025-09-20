@@ -1,0 +1,44 @@
+mapscripts EvergreenTown_RivalHouse_1F_MapScripts {}
+
+// NPC Scripts
+script EvergreenTown_RivalHouse_1F_NPCScript_Dad
+{
+    lock
+    faceplayer
+    msgbox(format("Welcome {PLAYER}, thanks for stopping by. I really appreciate you being such a good friend to my boy.\pGood luck, though as a father, I do have to root for him for the league challenge."))
+    release
+    end
+}
+
+// Sign Scripts
+script EvergreenTown_RivalHouse_1F_SignScript_Refrigerator
+{
+    lock
+    msgbox(format("This is stocked up to the brim!"))
+    release
+    end
+}
+
+script EvergreenTown_RivalHouse_1F_SignScript_TV
+{
+    lock
+    msgbox(format("Star Trek: The Next Generation is on the TV right now. Very good show."))
+    release
+    end
+}
+
+script EvergreenTown_RivalHouse_1F_SignScript_Notebook
+{
+    lock
+    msgbox(format("This notebook is filled with notes on all kinds of space based topics. Very cool indeed!"))
+    release
+    end
+}
+
+script EvergreenTown_RivalHouse_1F_SignScript_DadPC
+{
+    lock
+    msgbox(format("There's a simulation of a black hole running on this PC. That must have been hard to code up!"))
+    release
+    end
+}

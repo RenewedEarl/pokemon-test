@@ -625,6 +625,8 @@
   ],
   "gMapGroup_Indoor_EvergreenTown": [
     "EvergreenTown_PlayerHouse_1F",
-    "EvergreenTown_PlayerHouse_2F"
+    "EvergreenTown_PlayerHouse_2F",
+    "EvergreenTown_RivalHouse_1F",
+    "EvergreenTown_RivalHouse_2F"
   ]
 }

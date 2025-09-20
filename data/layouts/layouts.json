@@ -4440,6 +4440,26 @@
       "secondary_tileset": "gTileset_BrendansMaysHouse",
       "border_filepath": "data/layouts/EvergreenTown_PlayerHouse_2F/border.bin",
       "blockdata_filepath": "data/layouts/EvergreenTown_PlayerHouse_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_EVERGREEN_TOWN_RIVAL_HOUSE_1F",
+      "name": "EvergreenTown_RivalHouse_1F_Layout",
+      "width": 11,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BrendansMaysHouse",
+      "border_filepath": "data/layouts/EvergreenTown_RivalHouse_1F/border.bin",
+      "blockdata_filepath": "data/layouts/EvergreenTown_RivalHouse_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_EVERGREEN_TOWN_RIVAL_HOUSE_2F",
+      "name": "EvergreenTown_RivalHouse_2F_Layout",
+      "width": 9,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BrendansMaysHouse",
+      "border_filepath": "data/layouts/EvergreenTown_RivalHouse_2F/border.bin",
+      "blockdata_filepath": "data/layouts/EvergreenTown_RivalHouse_2F/map.bin"
     }
   ]
 }

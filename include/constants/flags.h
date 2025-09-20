@@ -47,10 +47,10 @@
 #define FLAG_START_WARP_FINISHED          0x21
 #define FLAG_MOM_CAME_UPSTAIRS            0x22
 #define FLAG_RIVAL_VISIBILITY             0x23
-#define FLAG_STARTER_BALL_ONE             0x24
-#define FLAG_STARTER_BALL_TWO             0x25
-#define FLAG_STARTER_BALL_THREE           0x26
-#define FLAG_UNUSED_0x027    0x27 // Unused Flag
+#define FLAG_RIVAL_HOUSE_VISIBILITY       0x24
+#define FLAG_STARTER_BALL_ONE             0x25
+#define FLAG_STARTER_BALL_TWO             0x26
+#define FLAG_STARTER_BALL_THREE           0x27
 #define FLAG_UNUSED_0x028    0x28 // Unused Flag
 #define FLAG_UNUSED_0x029    0x29 // Unused Flag
 #define FLAG_UNUSED_0x02A    0x2A // Unused Flag

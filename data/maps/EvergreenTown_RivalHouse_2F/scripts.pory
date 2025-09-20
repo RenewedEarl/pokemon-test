@@ -1,0 +1,44 @@
+mapscripts EvergreenTown_RivalHouse_2F_MapScripts {}
+
+// NPC Scripts
+script EvergreenTown_RivalHouse_2F_NPCScript_Rival
+{
+    lock
+    faceplayer
+    msgbox(format("Hey {PLAYER}, what are you doing here instead of at the lab?\pI'm just getting my exercise in before we have our battle.\pGo see the professor so you're not keeping him waiting."))
+    release
+    end
+}
+
+// Sign Scripts
+script EvergreenTown_RivalHouse_2F_SignScript_Gamecube
+{
+    lock
+    msgbox(format("Super Smash Bros. Melee is in the system right now. It's a really fun game!"))
+    release
+    end
+}
+
+script EvergreenTown_RivalHouse_2F_SignScript_TV
+{
+    lock
+    msgbox(format("Dragon Ball Z seems to be on right now. Gohan just clapped Perfect Cell."))
+    release
+    end
+}
+
+script EvergreenTown_RivalHouse_2F_SignScript_RivalPC
+{
+    lock
+    msgbox(format("His steam library is open right now and there's a lot of games on here."))
+    release
+    end
+}
+
+script EvergreenTown_RivalHouse_2F_SignScript_Notebook
+{
+    lock
+    msgbox(format("There seems to be all kinds of strategies for Pokemon battling in here."))
+    release
+    end
+}
