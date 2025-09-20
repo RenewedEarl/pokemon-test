@@ -242,12 +242,12 @@ EvergreenTown_PlayerHouse_2F_EventScript_BeginningScene_Text_0:
 
 EvergreenTown_PlayerHouse_2F_EventScript_MomUpstairs_Text_0:
 # 57 "data/maps/EvergreenTown_PlayerHouse_2F/scripts.pory"
-	.string "Hello honey, I see the professor finally\n"
-	.string "decided to ask for your help. Make sure\l"
-	.string "to grab all your supplies from the\l"
-	.string "package by your bed so you're prepared.\l"
-	.string "I'll see you downstairs before you\l"
-	.string "leave!$"
+	.string "Mom: Hello honey, I see the professor\n"
+	.string "finally decided to ask for your help.\l"
+	.string "Make sure to grab all your supplies from\l"
+	.string "the package by your bed so you're\l"
+	.string "prepared. I'll see you downstairs\l"
+	.string "before you leave!$"
 
 EvergreenTown_PlayerHouse_2F_SignScript_SupplyBox_Text_0:
 # 70 "data/maps/EvergreenTown_PlayerHouse_2F/scripts.pory"

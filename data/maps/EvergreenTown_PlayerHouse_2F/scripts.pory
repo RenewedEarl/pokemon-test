@@ -54,7 +54,7 @@ script EvergreenTown_PlayerHouse_2F_EventScript_MomUpstairs
     waitmovement(0)
     applymovement(LOCALID_PLAYER, EvergreenTown_PlayerHouse_2F_MovementScript_FaceMom)
     waitmovement(0)
-    msgbox(format("Hello honey, I see the professor finally decided to ask for your help. Make sure to grab all your supplies from the package by your bed so you're prepared. I'll see you downstairs before you leave!"))
+    msgbox(format("Mom: Hello honey, I see the professor finally decided to ask for your help. Make sure to grab all your supplies from the package by your bed so you're prepared. I'll see you downstairs before you leave!"))
     closemessage
     applymovement(1, EvergreenTown_PlayerHouse_2F_MovementScript_BackDownstairs)
     waitmovement(0)

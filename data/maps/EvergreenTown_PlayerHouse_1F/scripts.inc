@@ -29,73 +29,92 @@ EvergreenTown_PlayerHouse_1F_EventScript_CheckWithMom::
 	end
 
 
-EvergreenTown_PlayerHouse_1F_SignScript_Refrigerator::
+EvergreenTown_PlayerHouse_1F_NPCScript_Mom::
 # 25 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
 	lock
 # 26 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
-	msgbox EvergreenTown_PlayerHouse_1F_SignScript_Refrigerator_Text_0
+	faceplayer
 # 27 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
+	msgbox EvergreenTown_PlayerHouse_1F_NPCScript_Mom_Text_0
+# 28 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
+	release
+	end
+
+
+EvergreenTown_PlayerHouse_1F_SignScript_Refrigerator::
+# 35 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
+	lock
+# 36 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
+	msgbox EvergreenTown_PlayerHouse_1F_SignScript_Refrigerator_Text_0
+# 37 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
 	release
 	end
 
 
 EvergreenTown_PlayerHouse_1F_SignScript_TV::
-# 33 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
+# 43 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
 	lock
-# 34 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
+# 44 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
 	msgbox EvergreenTown_PlayerHouse_1F_SignScript_TV_Text_0
-# 35 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
+# 45 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
 	release
 	end
 
 
 EvergreenTown_PlayerHouse_1F_SignScript_GlassCase::
-# 41 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
+# 51 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
 	lock
-# 42 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
+# 52 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
 	msgbox EvergreenTown_PlayerHouse_1F_SignScript_GlassCase_Text_0
-# 43 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
+# 53 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
 	release
 	end
 
 
-# 48 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
+# 58 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
 EvergreenTown_PlayerHouse_1F_MovementScript_ToMom:
-# 50 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
+# 60 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
 	walk_down
-# 50 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
+# 60 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
 	walk_down
-# 51 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
+# 61 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
 	walk_right
-# 51 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
+# 61 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
 	walk_right
 	step_end
 
-# 54 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
+# 64 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
 EvergreenTown_PlayerHouse_1F_MovementScript_FacePlayer:
-# 56 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
+# 66 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
 	face_left
 	step_end
 
 EvergreenTown_PlayerHouse_1F_EventScript_CheckWithMom_Text_0:
 # 16 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
-	.string "The things in the package are really\n"
-	.string "useful, right? The professor should be\l"
-	.string "giving you a starter pokemon to fulfill\l"
-	.string "his errand so I made sure to get you\l"
-	.string "some good supplies in advance.\p"
+	.string "Mom: The things in the package are\n"
+	.string "really useful, right? The professor\l"
+	.string "should be giving you a starter pokemon\l"
+	.string "to fulfill his errand so I made sure to\l"
+	.string "get you some good supplies in advance.\p"
 	.string "Make sure to visit when you can!$"
 
+EvergreenTown_PlayerHouse_1F_NPCScript_Mom_Text_0:
+# 27 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
+	.string "Mom: Thanks for visiting me, I love it\n"
+	.string "when you come. If you need any advice\l"
+	.string "on a problem you're always welcome to\l"
+	.string "ask!$"
+
 EvergreenTown_PlayerHouse_1F_SignScript_Refrigerator_Text_0:
-# 26 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
+# 36 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
 	.string "This thing is filled to the brim!$"
 
 EvergreenTown_PlayerHouse_1F_SignScript_TV_Text_0:
-# 34 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
+# 44 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
 	.string "Breaking Bad seems to be on, such a\n"
 	.string "good show.$"
 
 EvergreenTown_PlayerHouse_1F_SignScript_GlassCase_Text_0:
-# 42 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
+# 52 "data/maps/EvergreenTown_PlayerHouse_1F/scripts.pory"
 	.string "There seems to be a lot of ceramic\n"
 	.string "figures and pottery in here.$"

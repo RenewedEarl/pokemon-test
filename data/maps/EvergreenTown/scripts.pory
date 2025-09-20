@@ -1,4 +1,14 @@
-mapscripts EvergreenTown_MapScripts {}
+mapscripts EvergreenTown_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION: EvergreenTown_OnTransition
+}
+
+script EvergreenTown_OnTransition
+{
+    if(!(flag(FLAG_RIVAL_VISIBILITY)))
+    {
+        setflag(FLAG_RIVAL_VISIBILITY)
+    }
+}
 
 // Sign Scripts
 script EvergreenTown_SignScript_PlayerHouse
@@ -136,6 +146,101 @@ script EvergreenTown_TriggerScript_StampedeBlock2
     end
 }
 
+script EvergreenTown_TriggerScript_GotoProfessor
+{
+    lock
+    msgbox(format("The Professor asked for you. Now's not the time to be leaving the town."))
+    closemessage
+    applymovement(LOCALID_PLAYER, EvergreenTown_MovementScript_GotoProfessor)
+    waitmovement(0)
+    release
+    end
+}
+
+script EvergreenTown_TriggerScript_RivalMeet
+{
+    lock
+    opendoor(16, 14)
+    waitdooranim
+    addobject(11)
+    applymovement(11, EvergreenTown_MovementScript_RivalOutDoor)
+    waitmovement(0)
+    closedoor(16, 14)
+    waitdooranim
+    applymovement(11, EvergreenTown_MovementScript_RivalOut)
+    waitmovement(0)
+    msgbox(format("Rival: Yo, {PLAYER}! I heard that you're going to be doing something for the professor. I recently just got my starter and plan on fighting the gyms to qualify for the league challenge, so let's fight at the edge of town when you're done at the lab.\pWait for me right before route 1 and I'll come to you.\pSee ya!"))
+    closemessage
+    applymovement(11, EvergreenTown_MovementScript_RivalIn)
+    waitmovement(0)
+    opendoor(16, 14)
+    waitdooranim
+    applymovement(11, EvergreenTown_MovementScript_RivalInDoor)
+    waitmovement(0)
+    removeobject(11)
+    closedoor(16, 14)
+    waitdooranim
+    setvar(VAR_RIVAL_STATE, 1)
+    release
+    end
+}
+
+script EvergreenTown_TriggerScript_RivalMeet2
+{
+    lock
+    opendoor(16, 14)
+    waitdooranim
+    addobject(11)
+    applymovement(11, EvergreenTown_MovementScript_RivalOutDoor)
+    waitmovement(0)
+    closedoor(16, 14)
+    waitdooranim
+    applymovement(11, EvergreenTown_MovementScript_RivalOut2)
+    waitmovement(0)
+    msgbox(format("Rival: Yo, {PLAYER}! I heard that you're going to be doing something for the professor. I recently just got my starter and plan on fighting the gyms to qualify for the league challenge, so let's fight at the edge of town when you're done at the lab.\pWait for me right before route 1 and I'll come to you.\pSee ya!"))
+    closemessage
+    applymovement(11, EvergreenTown_MovementScript_RivalIn2)
+    waitmovement(0)
+    opendoor(16, 14)
+    waitdooranim
+    applymovement(11, EvergreenTown_MovementScript_RivalInDoor)
+    waitmovement(0)
+    removeobject(11)
+    closedoor(16, 14)
+    waitdooranim
+    setvar(VAR_RIVAL_STATE, 1)
+    release
+    end
+}
+
+script EvergreenTown_TriggerScript_RivalMeet3
+{
+    lock
+    opendoor(16, 14)
+    waitdooranim
+    addobject(11)
+    applymovement(11, EvergreenTown_MovementScript_RivalOutDoor)
+    waitmovement(0)
+    closedoor(16, 14)
+    waitdooranim
+    applymovement(11, EvergreenTown_MovementScript_RivalOut3)
+    waitmovement(0)
+    msgbox(format("Rival: Yo, {PLAYER}! I heard that you're going to be doing something for the professor. I recently just got my starter and plan on fighting the gyms to qualify for the league challenge, so let's fight at the edge of town when you're done at the lab.\pWait for me right before route 1 and I'll come to you.\pSee ya!"))
+    closemessage
+    applymovement(11, EvergreenTown_MovementScript_RivalIn3)
+    waitmovement(0)
+    opendoor(16, 14)
+    waitdooranim
+    applymovement(11, EvergreenTown_MovementScript_RivalInDoor)
+    waitmovement(0)
+    removeobject(11)
+    closedoor(16, 14)
+    waitdooranim
+    setvar(VAR_RIVAL_STATE, 1)
+    release
+    end
+}
+
 // Movement Scripts
 movement EvergreenTown_MovementScript_Wingull
 {
@@ -187,4 +292,51 @@ movement EvergreenTown_MovementScript_AceTrainer2
 {
     walk_up
     face_left
+}
+
+movement EvergreenTown_MovementScript_GotoProfessor
+{
+    walk_up
+}
+
+movement EvergreenTown_MovementScript_RivalOutDoor
+{
+    walk_down
+}
+
+movement EvergreenTown_MovementScript_RivalInDoor
+{
+    walk_up
+}
+
+movement EvergreenTown_MovementScript_RivalOut
+{
+    face_left
+}
+
+movement EvergreenTown_MovementScript_RivalOut2
+{
+    walk_down
+    face_left
+}
+
+movement EvergreenTown_MovementScript_RivalOut3
+{
+    walk_down * 2
+    face_left
+}
+
+movement EvergreenTown_MovementScript_RivalIn
+{
+    face_up
+}
+
+movement EvergreenTown_MovementScript_RivalIn2
+{
+    walk_up
+}
+
+movement EvergreenTown_MovementScript_RivalIn3
+{
+    walk_up * 2
 }

@@ -13,8 +13,18 @@ script EvergreenTown_PlayerHouse_1F_EventScript_CheckWithMom
     waitmovement(0)
     applymovement(1, EvergreenTown_PlayerHouse_1F_MovementScript_FacePlayer)
     waitmovement(0)
-    msgbox(format("The things in the package are really useful, right? The professor should be giving you a starter pokemon to fulfill his errand so I made sure to get you some good supplies in advance.\pMake sure to visit when you can!"))
+    msgbox(format("Mom: The things in the package are really useful, right? The professor should be giving you a starter pokemon to fulfill his errand so I made sure to get you some good supplies in advance.\pMake sure to visit when you can!"))
     setvar(VAR_PLAYER_HOUSE_INTRO_STATE, 2)
+    release
+    end
+}
+
+// NPC Scripts
+script EvergreenTown_PlayerHouse_1F_NPCScript_Mom
+{
+    lock
+    faceplayer
+    msgbox(format("Mom: Thanks for visiting me, I love it when you come. If you need any advice on a problem you're always welcome to ask!"))
     release
     end
 }
