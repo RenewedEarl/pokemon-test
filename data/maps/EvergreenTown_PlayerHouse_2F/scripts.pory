@@ -1,0 +1,144 @@
+mapscripts EvergreenTown_PlayerHouse_2F_MapScripts 
+{
+    MAP_SCRIPT_ON_TRANSITION: EvergreenTown_PlayerHouse_2F_OnTransition
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_PLAYER_HOUSE_INTRO_STATE, 0: EvergreenTown_PlayerHouse_2F_EventScript_BeginningScene
+    ]
+    MAP_SCRIPT_ON_RESUME: EvergreenTown_PlayerHouse_2F_OnResume
+}
+
+script EvergreenTown_PlayerHouse_2F_OnTransition
+{
+    if(!(flag(FLAG_MOM_CAME_UPSTAIRS)))
+    {
+        setflag(FLAG_MOM_CAME_UPSTAIRS)
+    }
+
+    if(!(flag(FLAG_SYS_B_DASH)))
+    {
+        setflag(FLAG_SYS_B_DASH)
+    }
+}
+
+script EvergreenTown_PlayerHouse_2F_OnResume
+{
+    if(!(flag(FLAG_START_WARP_FINISHED)))
+    {
+        setflag(FLAG_START_WARP_FINISHED)
+        applymovement(LOCALID_PLAYER, EvergreenTown_PlayerHouse_2F_MovementScript_FacePC)
+    }    
+}
+
+// Event Scripts
+script EvergreenTown_PlayerHouse_2F_EventScript_BeginningScene
+{
+    lock
+    msgbox(format("Professor Sequoia: Good morning {PLAYER}, I need you to run an errand for me. Please come over to my lab on the other side of town to discuss more details; thanks for your time."))
+    closemessage
+    call(EvergreenTown_PlayerHouse_2F_EventScript_MomUpstairs)
+    applymovement(LOCALID_PLAYER, EvergreenTown_PlayerHouse_2F_MovementScript_ToSupplies)
+    waitmovement(0)
+    giveitem(ITEM_POTION, 5)
+    giveitem(ITEM_POKE_BALL, 10)
+    giveitem(ITEM_LAVA_COOKIE, 5)
+    setvar(VAR_PLAYER_HOUSE_INTRO_STATE, 1)
+    release
+    end
+}
+
+script EvergreenTown_PlayerHouse_2F_EventScript_MomUpstairs
+{
+    addobject(1)
+    playse(SE_EXIT)
+    applymovement(1, EvergreenTown_PlayerHouse_2F_MovementScript_TOPC)
+    waitmovement(0)
+    applymovement(LOCALID_PLAYER, EvergreenTown_PlayerHouse_2F_MovementScript_FaceMom)
+    waitmovement(0)
+    msgbox(format("Hello honey, I see the professor finally decided to ask for your help. Make sure to grab all your supplies from the package by your bed so you're prepared. I'll see you downstairs before you leave!"))
+    closemessage
+    applymovement(1, EvergreenTown_PlayerHouse_2F_MovementScript_BackDownstairs)
+    waitmovement(0)
+    playse(SE_EXIT)
+    removeobject(1)
+    return
+}
+
+// Sign Scripts
+script EvergreenTown_PlayerHouse_2F_SignScript_SupplyBox
+{
+    lock
+    msgbox(format("You've already emptied this out."))
+    release
+    end
+}
+
+script EvergreenTown_PlayerHouse_2F_SignScript_Gamecube
+{
+    lock
+    msgbox(format("The Legend of Zelda: Twilight Princess is currently in this system."))
+    release
+    end
+}
+
+script EvergreenTown_PlayerHouse_2F_SignScript_TV
+{
+    lock
+    msgbox(format("Gurren Lagann seems to be playing right now."))
+    release
+    end
+}
+
+script EvergreenTown_PlayerHouse_2F_SignScript_Notebook
+{
+    lock
+    msgbox(format("This notebook seems to be empty, you really should start using this..."))
+    release
+    end
+}
+
+script EvergreenTown_PlayerHouse_2F_SignScript_PC
+{
+    lock
+    multichoice(30, 10, MULTI_HOME_PC, 0)
+    if(var(VAR_RESULT) == 0)
+    {
+        msgbox(format("Professor Sequoia: Good morning {PLAYER}, I need you to run an errand for me. Please come over to my lab on the other side of town to discuss more details; thanks for your time."))    
+    }
+    elif(var(VAR_RESULT) == 1)
+    {
+        msgbox(format("There's a stampede east of Evergreen Town, ace trainers have been dispatched to deal with this disturbance and mitigate potential risks to the public."))
+    }
+    closemessage
+    waitmessage
+    release
+    end
+}
+
+// Movement Scripts
+movement EvergreenTown_PlayerHouse_2F_MovementScript_FacePC
+{
+    face_up
+}
+
+movement EvergreenTown_PlayerHouse_2F_MovementScript_TOPC
+{
+    walk_down
+    walk_right * 6
+}
+
+movement EvergreenTown_PlayerHouse_2F_MovementScript_FaceMom
+{
+    face_left
+}
+
+movement EvergreenTown_PlayerHouse_2F_MovementScript_BackDownstairs
+{
+    walk_left * 6
+    walk_up
+}
+
+movement EvergreenTown_PlayerHouse_2F_MovementScript_ToSupplies
+{
+    walk_down * 4
+    walk_left
+}

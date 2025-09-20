@@ -1162,3 +1162,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/EvergreenTown/scripts.inc"
 
 	.include "data/maps/EvergreenTown_PlayerHouse_1F/scripts.inc"
+
+	.include "data/maps/EvergreenTown_PlayerHouse_2F/scripts.inc"

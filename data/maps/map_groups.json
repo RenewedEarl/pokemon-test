@@ -624,6 +624,7 @@
     "Route124_DivingTreasureHuntersHouse"
   ],
   "gMapGroup_Indoor_EvergreenTown": [
-    "EvergreenTown_PlayerHouse_1F"
+    "EvergreenTown_PlayerHouse_1F",
+    "EvergreenTown_PlayerHouse_2F"
   ]
 }

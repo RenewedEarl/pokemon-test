@@ -42,8 +42,48 @@
       "elevation": 0,
       "dest_map": "MAP_EVERGREEN_TOWN",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 2,
+      "y": 2,
+      "elevation": 0,
+      "dest_map": "MAP_EVERGREEN_TOWN_PLAYER_HOUSE_2F",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 8,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "EvergreenTown_PlayerHouse_1F_SignScript_TV"
+    },
+    {
+      "type": "sign",
+      "x": 4,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "EvergreenTown_PlayerHouse_1F_SignScript_Refrigerator"
+    },
+    {
+      "type": "sign",
+      "x": 9,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "EvergreenTown_PlayerHouse_1F_SignScript_GlassCase"
+    },
+    {
+      "type": "sign",
+      "x": 10,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "EvergreenTown_PlayerHouse_1F_SignScript_GlassCase"
+    }
+  ]
 }

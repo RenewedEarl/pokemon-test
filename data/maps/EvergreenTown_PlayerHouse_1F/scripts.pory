@@ -1,1 +1,57 @@
-mapscripts EvergreenTown_PlayerHouse_1F_MapScripts {}
+mapscripts EvergreenTown_PlayerHouse_1F_MapScripts 
+{
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_PLAYER_HOUSE_INTRO_STATE, 1: EvergreenTown_PlayerHouse_1F_EventScript_CheckWithMom
+    ]
+}
+
+// Event Scripts
+script EvergreenTown_PlayerHouse_1F_EventScript_CheckWithMom
+{
+    lock
+    applymovement(LOCALID_PLAYER, EvergreenTown_PlayerHouse_1F_MovementScript_ToMom)
+    waitmovement(0)
+    applymovement(1, EvergreenTown_PlayerHouse_1F_MovementScript_FacePlayer)
+    waitmovement(0)
+    msgbox(format("The things in the package are really useful, right? The professor should be giving you a starter pokemon to fulfill his errand so I made sure to get you some good supplies in advance.\pMake sure to visit when you can!"))
+    setvar(VAR_PLAYER_HOUSE_INTRO_STATE, 2)
+    release
+    end
+}
+
+// Sign Scripts
+script EvergreenTown_PlayerHouse_1F_SignScript_Refrigerator
+{
+    lock
+    msgbox(format("This thing is filled to the brim!"))
+    release
+    end
+}
+
+script EvergreenTown_PlayerHouse_1F_SignScript_TV
+{
+    lock
+    msgbox(format("Breaking Bad seems to be on, such a good show."))
+    release
+    end
+}
+
+script EvergreenTown_PlayerHouse_1F_SignScript_GlassCase
+{
+    lock
+    msgbox(format("There seems to be a lot of ceramic figures and pottery in here."))
+    release
+    end
+}
+
+// Movement Scripts
+movement EvergreenTown_PlayerHouse_1F_MovementScript_ToMom
+{
+    walk_down * 2
+    walk_right * 2
+}
+
+movement EvergreenTown_PlayerHouse_1F_MovementScript_FacePlayer
+{
+    face_left
+}
