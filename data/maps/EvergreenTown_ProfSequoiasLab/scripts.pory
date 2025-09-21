@@ -1,0 +1,343 @@
+mapscripts EvergreenTown_ProfSequoiasLab_MapScripts {
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_EVERGREEN_PROF_STATE, 0: EvergreenTown_ProfSequoiasLab_EventScript_ProfGreeting
+    ]
+}
+
+// Event Scripts
+script EvergreenTown_ProfSequoiasLab_EventScript_ProfGreeting
+{
+    lock
+    msgbox(format("Prof. Sequoia: You're here finally here {PLAYER}, please come say hello!"))
+    closemessage
+    applymovement(LOCALID_PLAYER, EvergreenTown_ProfSequoiasLab_MovementScript_GreetProf)
+    waitmovement(0)
+    msgbox(format("Thank you for coming to help me. I need to have a package picked up from the Pokemon Center in the town down south. I'd normally get it myself, but this town has a tradition where the prospective trainers that grow up here run an errand like this to get acquainted with a partner Pokemon and have a stable foundation to build off from.\pPlease look at the three choices I have available for you!"))
+    closemessage
+    applymovement(LOCALID_PLAYER, EvergreenTown_ProfSequoiasLab_MovementScript_CheckStarters)
+    applymovement(1, EvergreenTown_ProfSequoiasLab_MovementScript_ProfShowStarters)
+    waitmovement(0)
+    msgbox(format("Here are the starters I have available. Please choose only one."))
+    setvar(VAR_EVERGREEN_PROF_STATE, 1)
+    release
+    end
+}
+
+script EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne
+{
+    lock
+    if(!(flag(FLAG_SYS_POKEMON_GET)))
+    {
+        showmonpic(SPECIES_DUSKULL, 10, 3)
+        msgbox("Do you want to choose Duskull?", MSGBOX_YESNO)
+        if(var(VAR_RESULT) == YES)
+        {
+            givemon(SPECIES_DUSKULL, 5, ITEM_ORAN_BERRY)
+            if(var(VAR_RESULT) == MON_GIVEN_TO_PARTY)
+            {
+                playfanfare(MUS_OBTAIN_ITEM)
+                msgbox("{PLAYER} received Duskull.")
+                removeobject(2)
+                setflag(FLAG_STARTER_BALL_ONE)
+                setflag(FLAG_SYS_POKEMON_GET)
+                call(EvergreenTown_ProfSequoiasLab_ProcessScript_NicknamePartyMon)
+                call(EvergreenTown_ProfSequoiasLab_EventScript_AfterStarter)
+            }
+            elif(var(VAR_RESULT) == MON_GIVEN_TO_PC)
+            {
+                playfanfare(MUS_OBTAIN_ITEM)
+                msgbox("{PLAYER} received Duskull.")
+                removeobject(2)
+                setflag(FLAG_STARTER_BALL_TWO)
+                setflag(FLAG_SYS_POKEMON_GET)
+                call(EvergreenTown_ProfSequoiasLab_ProcessScript_NicknameBoxMon)
+                call(EvergreenTown_ProfSequoiasLab_EventScript_AfterStarter)
+            }
+            else
+            {
+                hidemonpic
+                msgbox("No more room.")
+            }
+        }
+        else
+        {
+            hidemonpic
+            msgbox("You didn't choose this Pokemon.")
+        }
+        waitmessage
+        setvar(VAR_EVERGREEN_PROF_STATE, 2)
+    }
+    else
+    {
+        msgbox(format("You have already taken a starter."))
+    }
+    release
+    end
+}
+
+script EvergreenTown_ProfSequoiasLab_EventScript_StarterBallTwo
+{
+    lock
+    if(!(flag(FLAG_SYS_POKEMON_GET)))
+    {
+        showmonpic(SPECIES_IMPIDIMP, 10, 3)
+        msgbox("Do you want to choose Impidimp?", MSGBOX_YESNO)
+        if(var(VAR_RESULT) == YES)
+        {
+            givemon(SPECIES_IMPIDIMP, 5, ITEM_ORAN_BERRY)
+            if(var(VAR_RESULT) == MON_GIVEN_TO_PARTY)
+            {
+                playfanfare(MUS_OBTAIN_ITEM)
+                msgbox("{PLAYER} received Impidimp.")
+                removeobject(3)
+                setflag(FLAG_STARTER_BALL_TWO)
+                setflag(FLAG_SYS_POKEMON_GET)
+                call(EvergreenTown_ProfSequoiasLab_ProcessScript_NicknamePartyMon)
+                call(EvergreenTown_ProfSequoiasLab_EventScript_AfterStarter2)
+            }
+            elif(var(VAR_RESULT) == MON_GIVEN_TO_PC)
+            {
+                playfanfare(MUS_OBTAIN_ITEM)
+                msgbox("{PLAYER} received Impidimp.")
+                removeobject(3)
+                setflag(FLAG_STARTER_BALL_TWO)
+                setflag(FLAG_SYS_POKEMON_GET)
+                call(EvergreenTown_ProfSequoiasLab_ProcessScript_NicknameBoxMon)
+                call(EvergreenTown_ProfSequoiasLab_EventScript_AfterStarter2)
+            }
+            else
+            {
+                hidemonpic
+                msgbox("No more room.")
+            }
+        }
+        else
+        {
+            hidemonpic
+            msgbox("You didn't choose this Pokemon.")
+        }
+        waitmessage
+        setvar(VAR_EVERGREEN_PROF_STATE, 2)
+    }
+    else
+    {
+        msgbox(format("You have already taken a starter."))
+    }
+    release
+    end
+}
+
+script EvergreenTown_ProfSequoiasLab_EventScript_StarterBallThree
+{
+    lock
+    if(!(flag(FLAG_SYS_POKEMON_GET)))
+    {
+        showmonpic(SPECIES_BELDUM, 10, 3)
+        msgbox("Do you want to choose Beldum?", MSGBOX_YESNO)
+        if(var(VAR_RESULT) == YES)
+        {
+            givemon(SPECIES_BELDUM, 5, ITEM_ORAN_BERRY)
+            if(var(VAR_RESULT) == MON_GIVEN_TO_PARTY)
+            {
+                playfanfare(MUS_OBTAIN_ITEM)
+                msgbox("{PLAYER} received Beldum.")
+                removeobject(4)
+                setflag(FLAG_STARTER_BALL_THREE)
+                setflag(FLAG_SYS_POKEMON_GET)
+                call(EvergreenTown_ProfSequoiasLab_ProcessScript_NicknamePartyMon)
+                call(EvergreenTown_ProfSequoiasLab_EventScript_AfterStarter3)
+            }
+            elif(var(VAR_RESULT) == MON_GIVEN_TO_PC)
+            {
+                playfanfare(MUS_OBTAIN_ITEM)
+                msgbox("{PLAYER} received Beldum.")
+                removeobject(4)
+                setflag(FLAG_STARTER_BALL_THREE)
+                setflag(FLAG_SYS_POKEMON_GET)
+                call(EvergreenTown_ProfSequoiasLab_ProcessScript_NicknameBoxMon)
+                call(EvergreenTown_ProfSequoiasLab_EventScript_AfterStarter3)
+            }
+            else
+            {
+                hidemonpic
+                msgbox("No more room.")
+            }
+        }
+        else
+        {
+            hidemonpic
+            msgbox("You didn't choose this Pokemon.")
+        }
+        waitmessage
+        setvar(VAR_EVERGREEN_PROF_STATE, 2)
+    }
+    else
+    {
+        msgbox(format("You've already taken a starter."))
+    }
+    release
+    end
+}
+
+script EvergreenTown_ProfSequoiasLab_EventScript_AfterStarter
+{
+    applymovement(1, EvergreenTown_ProfSequoiasLab_MovementScript_AfterStarterCongrats)
+    waitmovement(0)
+    applymovement(LOCALID_PLAYER, EvergreenTown_ProfSequoiasLab_MovementScript_FaceProf)
+    waitmovement(0)
+    msgbox(format("Prof. Sequoia: I see you picked Duskull, it's a very solid choice. Defensively, the line fulfills some very useful roles while having some good offensive presense too. I look forward to seeing how your team develops!\pNow that we have your starter selection out of the way, good luck on getting to the next town and securing the package."))
+    call(EvergreenTown_ProfSequoiasLab_EventScript_GivePokedex)
+    return
+}
+
+script EvergreenTown_ProfSequoiasLab_EventScript_AfterStarter2
+{
+    applymovement(1, EvergreenTown_ProfSequoiasLab_MovementScript_AfterStarterCongrats2)
+    waitmovement(0)
+    applymovement(LOCALID_PLAYER, EvergreenTown_ProfSequoiasLab_MovementScript_FaceProf)
+    waitmovement(0)
+    msgbox(format("Prof. Sequoia: I see you picked Impidimp, it's a very solid choice. The entire line provides some very good support utility, while also having some offensive kick to it. I look forward to seeing how your team develops!\pNow that we have your starter selection out of the way, good luck on getting to the next town and securing the package."))
+    call(EvergreenTown_ProfSequoiasLab_EventScript_GivePokedex)
+    return
+}
+
+script EvergreenTown_ProfSequoiasLab_EventScript_AfterStarter3
+{
+    applymovement(1, EvergreenTown_ProfSequoiasLab_MovementScript_AfterStarterCongrats3)
+    waitmovement(0)
+    applymovement(LOCALID_PLAYER, EvergreenTown_ProfSequoiasLab_MovementScript_FaceProf)
+    waitmovement(0)
+    msgbox(format("Prof Sequoia: I see you picked Beldum, it's a very solid choice. Offensively, this line hits like a truck while having a good type combination as a bonus. I look forward to seeing how your team develops!\pNow that we have your starter selection out of the way, good luck on getting to the next town and securing the package."))
+    call(EvergreenTown_ProfSequoiasLab_EventScript_GivePokedex)
+    return
+}
+
+script EvergreenTown_ProfSequoiasLab_EventScript_GivePokedex
+{
+    msgbox(format("Have this Pokedex as well so you can study what you see and gather as complete of an encyclopedia as possible to support your ambitions."))
+    playfanfare(MUS_OBTAIN_ITEM)
+    message("{PLAYER} received the Pokedex!")
+    waitfanfare
+    closemessage
+    setflag(FLAG_SYS_POKEDEX_GET)
+    setflag(FLAG_ADVENTURE_STARTED)
+    special(SetUnlockedPokedexFlags)
+    setflag(FLAG_RECEIVED_POKEDEX_FROM_BIRCH)
+    setflag(FLAG_SYS_NATIONAL_DEX)
+    special(EnableNationalPokedex)
+    setvar(VAR_CABLE_CLUB_TUTORIAL_STATE, 1)
+    setvar(VAR_EVERGREEN_TOWN_STATE, 1)
+    msgbox(format("Good luck on your task!"))
+    return
+}
+
+// NPC Scripts
+script EvergreenTown_ProfSequoiasLab_NPCScript_Professor
+{
+    if(!(flag(FLAG_SYS_POKEMON_GET)))
+    {
+        lock
+        faceplayer
+        msgbox(format("Prof. Sequoia: Please pick a starter."))
+        release
+        end
+    }
+    elif(var(VAR_EVERGREEN_PROF_STATE) == 2)
+    {
+        lock
+        faceplayer
+        msgbox(format("Prof. Sequoia: You still haven't gotten the package yet. What are you doing around here instead of out on the path down south?\pIf your pokemon need healing, use the big machine with the red top."))
+        release
+        end
+    }
+    else
+    {
+        lock
+        faceplayer
+        msgbox(format("Prof. Sequoia: How's your journey going? If you need any technical help please don't hesitate to ask. Also, if there's ever any discoveries that would be of help to you, I'll make sure to call you."))
+        release
+        end
+    }
+}
+
+// Trigger Scripts
+script EvergreenTown_ProfSequoiasLab_TriggerScript_BackToStarter
+{
+    lock
+    msgbox(format("Prof. Sequoia: What are you doing? You still need to grab a starter before you leave."))
+    closemessage
+    applymovement(LOCALID_PLAYER, EvergreenTown_ProfSequoiasLab_MovementScript_GetStarter)
+    waitmovement(0)
+    release
+    end
+}
+
+// Process Scripts
+script EvergreenTown_ProfSequoiasLab_ProcessScript_NicknamePartyMon
+{
+    msgbox("Give it a nickname?", MSGBOX_YESNO)
+    hidemonpic
+    if(var(VAR_RESULT) == YES)
+    {
+        call(Common_EventScript_GetGiftMonPartySlot)
+        call(Common_EventScript_NameReceivedPartyMon)
+    }
+    if(var(VAR_RESULT) == NO)
+    {
+        closemessage
+    }
+}
+
+script EvergreenTown_ProfSequoiasLab_ProcessScript_NicknameBoxMon
+{
+    msgbox("Give ite a nickname?", MSGBOX_YESNO)
+    hidemonpic
+    if(var(VAR_RESULT) == YES)
+    {
+        call(Common_EventScript_NameReceivedBoxMon)
+    }
+    call(Common_EventScript_TransferredToPC)
+}
+
+// Movement Scripts
+movement EvergreenTown_ProfSequoiasLab_MovementScript_GreetProf
+{
+    walk_up * 4
+}
+
+movement EvergreenTown_ProfSequoiasLab_MovementScript_ProfShowStarters
+{
+    walk_up * 2
+    walk_right * 2
+    face_left
+}
+
+movement EvergreenTown_ProfSequoiasLab_MovementScript_CheckStarters
+{
+    walk_up * 2
+}
+
+movement EvergreenTown_ProfSequoiasLab_MovementScript_AfterStarterCongrats
+{
+    walk_left * 2
+}
+
+movement EvergreenTown_ProfSequoiasLab_MovementScript_AfterStarterCongrats2
+{
+    walk_left
+}
+
+movement EvergreenTown_ProfSequoiasLab_MovementScript_AfterStarterCongrats3
+{
+    face_left
+}
+
+movement EvergreenTown_ProfSequoiasLab_MovementScript_FaceProf
+{
+    face_right
+}
+
+movement EvergreenTown_ProfSequoiasLab_MovementScript_GetStarter
+{
+    walk_up
+}

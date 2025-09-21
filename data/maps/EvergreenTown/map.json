@@ -185,6 +185,13 @@
       "elevation": 0,
       "dest_map": "MAP_EVERGREEN_TOWN_RIVAL_HOUSE_1F",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 27,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_EVERGREEN_TOWN_PROF_SEQUOIAS_LAB",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

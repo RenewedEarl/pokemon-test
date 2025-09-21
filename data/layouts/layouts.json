@@ -4460,6 +4460,16 @@
       "secondary_tileset": "gTileset_BrendansMaysHouse",
       "border_filepath": "data/layouts/EvergreenTown_RivalHouse_2F/border.bin",
       "blockdata_filepath": "data/layouts/EvergreenTown_RivalHouse_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_EVERGREEN_TOWN_PROF_SEQUOIAS_LAB",
+      "name": "EvergreenTown_ProfSequoiasLab_Layout",
+      "width": 13,
+      "height": 13,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Lab",
+      "border_filepath": "data/layouts/EvergreenTown_ProfSequoiasLab/border.bin",
+      "blockdata_filepath": "data/layouts/EvergreenTown_ProfSequoiasLab/map.bin"
     }
   ]
 }

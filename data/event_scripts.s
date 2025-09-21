@@ -1168,3 +1168,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/EvergreenTown_RivalHouse_1F/scripts.inc"
 
 	.include "data/maps/EvergreenTown_RivalHouse_2F/scripts.inc"
+
+	.include "data/maps/EvergreenTown_ProfSequoiasLab/scripts.inc"
