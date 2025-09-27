@@ -10,35 +10,56 @@ script EvergreenTown_OnTransition
     }
 }
 
-// Sign Scripts
-script EvergreenTown_SignScript_PlayerHouse
+// Event Scripts
+script EvergreenTown_EventScript_EvergreenJacksonBattle
 {
-    lock
-    msgbox(format("{PLAYER}'s House..."))
-    release
-    end
+    msgbox(EvergreenTown_TextScript_RivalIntro)
+    setflag(FLAG_NO_WHITEOUT)
+    while(var(VAR_RESULT) != B_OUTCOME_WON)
+    {
+        if(flag(FLAG_STARTER_BALL_ONE))
+        {
+            trainerbattle_no_intro(TRAINER_RIVAL_EVERGREEN_IMPIDIMP, EvergreenTown_TextScript_RivalBattleFinished)
+            specialvar(VAR_RESULT, GetBattleOutcome)
+        }
+        elif(flag(FLAG_STARTER_BALL_TWO))
+        {
+            trainerbattle_no_intro(TRAINER_RIVAL_EVERGREEN_BELDUM, EvergreenTown_TextScript_RivalBattleFinished)
+            specialvar(VAR_RESULT, GetBattleOutcome)
+        }
+        elif(flag(FLAG_STARTER_BALL_THREE))
+        {
+            trainerbattle_no_intro(TRAINER_RIVAL_EVERGREEN_DUSKULL, EvergreenTown_TextScript_RivalBattleFinished)
+            specialvar(VAR_RESULT, GetBattleOutcome)
+        }
+
+        if(var(VAR_RESULT) == B_OUTCOME_LOST)
+        {
+            msgbox(format("Jackson: That was a rush, you did really well!\pOur next battle will be even more amazing, I can tell.\pBe safe bro and see you again soon!"))
+            closemessage
+            applymovement(12, EvergreenTown_MovementScript_RivalAway)
+            waitmovement(0)
+            removeobject(12)
+            special(HealPlayerParty)
+            setvar(VAR_RIVAL_STATE, 2)
+            clearflag(FLAG_NO_WHITEOUT)
+            release
+            end
+        }
+    }
+    special(HealPlayerParty)
+    clearflag(FLAG_NO_WHITEOUT)
+    call(EvergreenTown_EventScript_EvergreenJacksonBeaten)
 }
 
-script EvergreenTown_SignScript_RivalHouse
+script EvergreenTown_EventScript_EvergreenJacksonBeaten
 {
-    lock
-    msgbox(format("Rival's House..."))
-    release
-    end
-}
-
-script EvergreenTown_SignScript_ProfessorsLab
-{
-    lock
-    msgbox(format("Professor Sequioa's Lab..."))
-    release
-    end
-}
-
-script EvergreenTown_SignScript_EvergreenSign
-{
-    lock
-    msgbox(format("Evergreen Town, a lush homey atmosphere."))
+    msgbox(format("Jackson: You're really good at this. It was a blast to fight you!\pI'll make sure to get better and improve my team then challenge you again.\pBe safe bro."))
+    closemessage
+    applymovement(12, EvergreenTown_MovementScript_RivalAway)
+    waitmovement(0)
+    removeobject(12)
+    setvar(VAR_RIVAL_STATE, 2)
     release
     end
 }
@@ -169,7 +190,7 @@ script EvergreenTown_TriggerScript_RivalMeet
     waitdooranim
     applymovement(11, EvergreenTown_MovementScript_RivalOut)
     waitmovement(0)
-    msgbox(format("Rival: Yo, {PLAYER}! I heard that you're going to be doing something for the professor. I recently just got my starter and plan on fighting the gyms to qualify for the league challenge, so let's fight at the edge of town when you're done at the lab.\pWait for me right before route 1 and I'll come to you.\pSee ya!"))
+    msgbox(format("Jackson: Yo, {PLAYER}! I heard that you're going to be doing something for the professor. I recently just got my starter and plan on fighting the gyms to qualify for the league challenge, so let's fight at the edge of town when you're done at the lab.\pWait for me right before route 1 and I'll come to you.\pSee ya!"))
     closemessage
     applymovement(11, EvergreenTown_MovementScript_RivalIn)
     waitmovement(0)
@@ -197,7 +218,7 @@ script EvergreenTown_TriggerScript_RivalMeet2
     waitdooranim
     applymovement(11, EvergreenTown_MovementScript_RivalOut2)
     waitmovement(0)
-    msgbox(format("Rival: Yo, {PLAYER}! I heard that you're going to be doing something for the professor. I recently just got my starter and plan on fighting the gyms to qualify for the league challenge, so let's fight at the edge of town when you're done at the lab.\pWait for me right before route 1 and I'll come to you.\pSee ya!"))
+    msgbox(format("Jackson: Yo, {PLAYER}! I heard that you're going to be doing something for the professor. I recently just got my starter and plan on fighting the gyms to qualify for the league challenge, so let's fight at the edge of town when you're done at the lab.\pWait for me right before route 1 and I'll come to you.\pSee ya!"))
     closemessage
     applymovement(11, EvergreenTown_MovementScript_RivalIn2)
     waitmovement(0)
@@ -225,7 +246,7 @@ script EvergreenTown_TriggerScript_RivalMeet3
     waitdooranim
     applymovement(11, EvergreenTown_MovementScript_RivalOut3)
     waitmovement(0)
-    msgbox(format("Rival: Yo, {PLAYER}! I heard that you're going to be doing something for the professor. I recently just got my starter and plan on fighting the gyms to qualify for the league challenge, so let's fight at the edge of town when you're done at the lab.\pWait for me right before route 1 and I'll come to you.\pSee ya!"))
+    msgbox(format("Jackson: Yo, {PLAYER}! I heard that you're going to be doing something for the professor. I recently just got my starter and plan on fighting the gyms to qualify for the league challenge, so let's fight at the edge of town when you're done at the lab.\pWait for me right before route 1 and I'll come to you.\pSee ya!"))
     closemessage
     applymovement(11, EvergreenTown_MovementScript_RivalIn3)
     waitmovement(0)
@@ -237,6 +258,61 @@ script EvergreenTown_TriggerScript_RivalMeet3
     closedoor(16, 14)
     waitdooranim
     setvar(VAR_RIVAL_STATE, 1)
+    release
+    end
+}
+
+script EvergreenTown_TriggerScript_FirstRivalBattle
+{
+    lock
+    addobject(12)
+    applymovement(12, EvergreenTown_MovementScript_ToMC)
+    waitmovement(0)
+    applymovement(OBJ_EVENT_ID_PLAYER, EvergreenTown_MovementScript_FaceRival)
+    waitmovement(0)
+    call(EvergreenTown_EventScript_EvergreenJacksonBattle)
+}
+
+script EvergreenTown_TriggerScript_FirstRivalBattle2
+{
+    lock
+    addobject(12)
+    applymovement(12, EvergreenTown_MovementScript_ToMC2)
+    waitmovement(0)
+    applymovement(OBJ_EVENT_ID_PLAYER, EvergreenTown_MovementScript_FaceRival)
+    waitmovement(0)
+    call(EvergreenTown_EventScript_EvergreenJacksonBattle)
+}
+
+// Sign Scripts
+script EvergreenTown_SignScript_PlayerHouse
+{
+    lock
+    msgbox(format("{PLAYER}'s House..."))
+    release
+    end
+}
+
+script EvergreenTown_SignScript_RivalHouse
+{
+    lock
+    msgbox(format("Rival's House..."))
+    release
+    end
+}
+
+script EvergreenTown_SignScript_ProfessorsLab
+{
+    lock
+    msgbox(format("Professor Sequioa's Lab..."))
+    release
+    end
+}
+
+script EvergreenTown_SignScript_EvergreenSign
+{
+    lock
+    msgbox(format("Evergreen Town, a lush homey atmosphere."))
     release
     end
 }
@@ -339,4 +415,36 @@ movement EvergreenTown_MovementScript_RivalIn2
 movement EvergreenTown_MovementScript_RivalIn3
 {
     walk_up * 2
+}
+
+movement EvergreenTown_MovementScript_ToMC
+{
+    walk_down * 5
+}
+
+movement EvergreenTown_MovementScript_ToMC2
+{
+    walk_right
+    walk_down * 5
+}
+
+movement EvergreenTown_MovementScript_FaceRival
+{
+    face_up
+}
+
+movement EvergreenTown_MovementScript_RivalAway
+{
+    walk_up * 5
+}
+
+// Text Scripts
+text EvergreenTown_TextScript_RivalIntro
+{
+    format("Jackson: Hey {PLAYER}, are you ready to have our battle? I've wanted to do this for a long time!")
+}
+
+text EvergreenTown_TextScript_RivalBattleFinished
+{
+    "Good game, that was fun!"
 }

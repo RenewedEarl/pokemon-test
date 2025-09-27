@@ -32,7 +32,7 @@ script EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne
         msgbox("Do you want to choose Duskull?", MSGBOX_YESNO)
         if(var(VAR_RESULT) == YES)
         {
-            givemon(SPECIES_DUSKULL, 5, ITEM_ORAN_BERRY)
+            givemon(SPECIES_DUSKULL, 5, ITEM_ORAN_BERRY, hpIv = 31, atkIv = 31, defIv = 31, speedIv = 31, spAtkIv = 31, spDefIv = 31)
             if(var(VAR_RESULT) == MON_GIVEN_TO_PARTY)
             {
                 playfanfare(MUS_OBTAIN_ITEM)
@@ -84,7 +84,7 @@ script EvergreenTown_ProfSequoiasLab_EventScript_StarterBallTwo
         msgbox("Do you want to choose Impidimp?", MSGBOX_YESNO)
         if(var(VAR_RESULT) == YES)
         {
-            givemon(SPECIES_IMPIDIMP, 5, ITEM_ORAN_BERRY)
+            givemon(SPECIES_IMPIDIMP, 5, ITEM_ORAN_BERRY, hpIv = 31, atkIv = 31, defIv = 31, speedIv = 31, spAtkIv = 31, spDefIv = 31)
             if(var(VAR_RESULT) == MON_GIVEN_TO_PARTY)
             {
                 playfanfare(MUS_OBTAIN_ITEM)
@@ -136,7 +136,7 @@ script EvergreenTown_ProfSequoiasLab_EventScript_StarterBallThree
         msgbox("Do you want to choose Beldum?", MSGBOX_YESNO)
         if(var(VAR_RESULT) == YES)
         {
-            givemon(SPECIES_BELDUM, 5, ITEM_ORAN_BERRY)
+            givemon(SPECIES_BELDUM, 5, ITEM_ORAN_BERRY, hpIv = 31, atkIv = 31, defIv = 31, speedIv = 31, spAtkIv = 31, spDefIv = 31)
             if(var(VAR_RESULT) == MON_GIVEN_TO_PARTY)
             {
                 playfanfare(MUS_OBTAIN_ITEM)

@@ -72,7 +72,7 @@ EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_5:
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_6:
 # 35 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
-	givemon SPECIES_DUSKULL, 5, ITEM_ORAN_BERRY
+	givemon SPECIES_DUSKULL, 5, ITEM_ORAN_BERRY, hpIv = 31, atkIv = 31, defIv = 31, speedIv = 31, spAtkIv = 31, spDefIv = 31
 # 36 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	compare VAR_RESULT, MON_GIVEN_TO_PARTY
 	goto_if_eq EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_9
@@ -153,7 +153,7 @@ EvergreenTown_ProfSequoiasLab_EventScript_StarterBallTwo_5:
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallTwo_6:
 # 87 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
-	givemon SPECIES_IMPIDIMP, 5, ITEM_ORAN_BERRY
+	givemon SPECIES_IMPIDIMP, 5, ITEM_ORAN_BERRY, hpIv = 31, atkIv = 31, defIv = 31, speedIv = 31, spAtkIv = 31, spDefIv = 31
 # 88 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	compare VAR_RESULT, MON_GIVEN_TO_PARTY
 	goto_if_eq EvergreenTown_ProfSequoiasLab_EventScript_StarterBallTwo_9
@@ -234,7 +234,7 @@ EvergreenTown_ProfSequoiasLab_EventScript_StarterBallThree_5:
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallThree_6:
 # 139 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
-	givemon SPECIES_BELDUM, 5, ITEM_ORAN_BERRY
+	givemon SPECIES_BELDUM, 5, ITEM_ORAN_BERRY, hpIv = 31, atkIv = 31, defIv = 31, speedIv = 31, spAtkIv = 31, spDefIv = 31
 # 140 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	compare VAR_RESULT, MON_GIVEN_TO_PARTY
 	goto_if_eq EvergreenTown_ProfSequoiasLab_EventScript_StarterBallThree_9

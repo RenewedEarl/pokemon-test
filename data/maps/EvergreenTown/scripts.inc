@@ -15,570 +15,746 @@ EvergreenTown_OnTransition_1:
 	return
 
 
-EvergreenTown_SignScript_PlayerHouse::
+EvergreenTown_EventScript_EvergreenJacksonBattle::
 # 16 "data/maps/EvergreenTown/scripts.pory"
-	lock
+	msgbox EvergreenTown_TextScript_RivalIntro
 # 17 "data/maps/EvergreenTown/scripts.pory"
-	msgbox EvergreenTown_SignScript_PlayerHouse_Text_0
+	setflag FLAG_NO_WHITEOUT
+EvergreenTown_EventScript_EvergreenJacksonBattle_2:
 # 18 "data/maps/EvergreenTown/scripts.pory"
-	release
-	end
+	compare VAR_RESULT, B_OUTCOME_WON
+	goto_if_ne EvergreenTown_EventScript_EvergreenJacksonBattle_3
+# 50 "data/maps/EvergreenTown/scripts.pory"
+	special HealPlayerParty
+# 51 "data/maps/EvergreenTown/scripts.pory"
+	clearflag FLAG_NO_WHITEOUT
+# 52 "data/maps/EvergreenTown/scripts.pory"
+	call EvergreenTown_EventScript_EvergreenJacksonBeaten
+	return
 
-
-EvergreenTown_SignScript_RivalHouse::
-# 24 "data/maps/EvergreenTown/scripts.pory"
-	lock
+EvergreenTown_EventScript_EvergreenJacksonBattle_3:
+# 20 "data/maps/EvergreenTown/scripts.pory"
+	goto_if_set FLAG_STARTER_BALL_ONE, EvergreenTown_EventScript_EvergreenJacksonBattle_6
 # 25 "data/maps/EvergreenTown/scripts.pory"
-	msgbox EvergreenTown_SignScript_RivalHouse_Text_0
-# 26 "data/maps/EvergreenTown/scripts.pory"
-	release
-	end
+	goto_if_set FLAG_STARTER_BALL_TWO, EvergreenTown_EventScript_EvergreenJacksonBattle_7
+# 30 "data/maps/EvergreenTown/scripts.pory"
+	goto_if_set FLAG_STARTER_BALL_THREE, EvergreenTown_EventScript_EvergreenJacksonBattle_8
+EvergreenTown_EventScript_EvergreenJacksonBattle_5:
+# 36 "data/maps/EvergreenTown/scripts.pory"
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq EvergreenTown_EventScript_EvergreenJacksonBattle_12
+	goto EvergreenTown_EventScript_EvergreenJacksonBattle_2
 
+EvergreenTown_EventScript_EvergreenJacksonBattle_6:
+# 22 "data/maps/EvergreenTown/scripts.pory"
+	trainerbattle_no_intro TRAINER_RIVAL_EVERGREEN_IMPIDIMP, EvergreenTown_TextScript_RivalBattleFinished
+# 23 "data/maps/EvergreenTown/scripts.pory"
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto EvergreenTown_EventScript_EvergreenJacksonBattle_5
 
-EvergreenTown_SignScript_ProfessorsLab::
+EvergreenTown_EventScript_EvergreenJacksonBattle_7:
+# 27 "data/maps/EvergreenTown/scripts.pory"
+	trainerbattle_no_intro TRAINER_RIVAL_EVERGREEN_BELDUM, EvergreenTown_TextScript_RivalBattleFinished
+# 28 "data/maps/EvergreenTown/scripts.pory"
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto EvergreenTown_EventScript_EvergreenJacksonBattle_5
+
+EvergreenTown_EventScript_EvergreenJacksonBattle_8:
 # 32 "data/maps/EvergreenTown/scripts.pory"
-	lock
+	trainerbattle_no_intro TRAINER_RIVAL_EVERGREEN_DUSKULL, EvergreenTown_TextScript_RivalBattleFinished
 # 33 "data/maps/EvergreenTown/scripts.pory"
-	msgbox EvergreenTown_SignScript_ProfessorsLab_Text_0
-# 34 "data/maps/EvergreenTown/scripts.pory"
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto EvergreenTown_EventScript_EvergreenJacksonBattle_5
+
+EvergreenTown_EventScript_EvergreenJacksonBattle_12:
+# 38 "data/maps/EvergreenTown/scripts.pory"
+	msgbox EvergreenTown_EventScript_EvergreenJacksonBattle_Text_0
+# 39 "data/maps/EvergreenTown/scripts.pory"
+	closemessage
+# 40 "data/maps/EvergreenTown/scripts.pory"
+	applymovement 12, EvergreenTown_MovementScript_RivalAway
+# 41 "data/maps/EvergreenTown/scripts.pory"
+	waitmovement 0
+# 42 "data/maps/EvergreenTown/scripts.pory"
+	removeobject 12
+# 43 "data/maps/EvergreenTown/scripts.pory"
+	special HealPlayerParty
+# 44 "data/maps/EvergreenTown/scripts.pory"
+	setvar VAR_RIVAL_STATE, 2
+# 45 "data/maps/EvergreenTown/scripts.pory"
+	clearflag FLAG_NO_WHITEOUT
+# 46 "data/maps/EvergreenTown/scripts.pory"
 	release
 	end
 
 
-EvergreenTown_SignScript_EvergreenSign::
-# 40 "data/maps/EvergreenTown/scripts.pory"
-	lock
-# 41 "data/maps/EvergreenTown/scripts.pory"
-	msgbox EvergreenTown_SignScript_EvergreenSign_Text_0
-# 42 "data/maps/EvergreenTown/scripts.pory"
+EvergreenTown_EventScript_EvergreenJacksonBeaten::
+# 57 "data/maps/EvergreenTown/scripts.pory"
+	msgbox EvergreenTown_EventScript_EvergreenJacksonBeaten_Text_0
+# 58 "data/maps/EvergreenTown/scripts.pory"
+	closemessage
+# 59 "data/maps/EvergreenTown/scripts.pory"
+	applymovement 12, EvergreenTown_MovementScript_RivalAway
+# 60 "data/maps/EvergreenTown/scripts.pory"
+	waitmovement 0
+# 61 "data/maps/EvergreenTown/scripts.pory"
+	removeobject 12
+# 62 "data/maps/EvergreenTown/scripts.pory"
+	setvar VAR_RIVAL_STATE, 2
+# 63 "data/maps/EvergreenTown/scripts.pory"
 	release
 	end
 
 
 EvergreenTown_NPCScript_OldMan::
-# 49 "data/maps/EvergreenTown/scripts.pory"
+# 70 "data/maps/EvergreenTown/scripts.pory"
 	lock
-# 50 "data/maps/EvergreenTown/scripts.pory"
+# 71 "data/maps/EvergreenTown/scripts.pory"
 	faceplayer
-# 51 "data/maps/EvergreenTown/scripts.pory"
+# 72 "data/maps/EvergreenTown/scripts.pory"
 	msgbox EvergreenTown_NPCScript_OldMan_Text_0
-# 52 "data/maps/EvergreenTown/scripts.pory"
+# 73 "data/maps/EvergreenTown/scripts.pory"
 	release
 	end
 
 
 EvergreenTown_NPCScript_Beauty::
-# 58 "data/maps/EvergreenTown/scripts.pory"
+# 79 "data/maps/EvergreenTown/scripts.pory"
 	lock
-# 59 "data/maps/EvergreenTown/scripts.pory"
+# 80 "data/maps/EvergreenTown/scripts.pory"
 	faceplayer
-# 60 "data/maps/EvergreenTown/scripts.pory"
+# 81 "data/maps/EvergreenTown/scripts.pory"
 	msgbox EvergreenTown_NPCScript_Beauty_Text_0
-# 61 "data/maps/EvergreenTown/scripts.pory"
+# 82 "data/maps/EvergreenTown/scripts.pory"
 	release
 	end
 
 
 EvergreenTown_NPCScript_Boy::
-# 67 "data/maps/EvergreenTown/scripts.pory"
+# 88 "data/maps/EvergreenTown/scripts.pory"
 	lock
-# 68 "data/maps/EvergreenTown/scripts.pory"
+# 89 "data/maps/EvergreenTown/scripts.pory"
 	faceplayer
-# 69 "data/maps/EvergreenTown/scripts.pory"
+# 90 "data/maps/EvergreenTown/scripts.pory"
 	goto_if_unset FLAG_RECEIVED_EVERGREEN_POTION, EvergreenTown_NPCScript_Boy_2
-# 91 "data/maps/EvergreenTown/scripts.pory"
+# 112 "data/maps/EvergreenTown/scripts.pory"
 	msgbox EvergreenTown_NPCScript_Boy_Text_3
-# 92 "data/maps/EvergreenTown/scripts.pory"
+# 113 "data/maps/EvergreenTown/scripts.pory"
 	applymovement 7, EvergreenTown_MovementScript_Boy
-# 93 "data/maps/EvergreenTown/scripts.pory"
+# 114 "data/maps/EvergreenTown/scripts.pory"
 	waitmovement 0
 EvergreenTown_NPCScript_Boy_1:
-# 95 "data/maps/EvergreenTown/scripts.pory"
+# 116 "data/maps/EvergreenTown/scripts.pory"
 	release
 	end
 
 EvergreenTown_NPCScript_Boy_2:
-# 71 "data/maps/EvergreenTown/scripts.pory"
+# 92 "data/maps/EvergreenTown/scripts.pory"
 	msgbox EvergreenTown_NPCScript_Boy_Text_0, MSGBOX_YESNO
-# 72 "data/maps/EvergreenTown/scripts.pory"
+# 93 "data/maps/EvergreenTown/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq EvergreenTown_NPCScript_Boy_5
-# 82 "data/maps/EvergreenTown/scripts.pory"
+# 103 "data/maps/EvergreenTown/scripts.pory"
 	msgbox EvergreenTown_NPCScript_Boy_Text_2
-# 83 "data/maps/EvergreenTown/scripts.pory"
+# 104 "data/maps/EvergreenTown/scripts.pory"
 	giveitem ITEM_POTION
-# 84 "data/maps/EvergreenTown/scripts.pory"
+# 105 "data/maps/EvergreenTown/scripts.pory"
 	setflag FLAG_RECEIVED_EVERGREEN_POTION
-# 85 "data/maps/EvergreenTown/scripts.pory"
+# 106 "data/maps/EvergreenTown/scripts.pory"
 	applymovement 7, EvergreenTown_MovementScript_Boy
-# 86 "data/maps/EvergreenTown/scripts.pory"
+# 107 "data/maps/EvergreenTown/scripts.pory"
 	waitmovement 0
 	goto EvergreenTown_NPCScript_Boy_1
 
 EvergreenTown_NPCScript_Boy_5:
-# 74 "data/maps/EvergreenTown/scripts.pory"
+# 95 "data/maps/EvergreenTown/scripts.pory"
 	msgbox EvergreenTown_NPCScript_Boy_Text_1
-# 75 "data/maps/EvergreenTown/scripts.pory"
+# 96 "data/maps/EvergreenTown/scripts.pory"
 	giveitem ITEM_POTION
-# 76 "data/maps/EvergreenTown/scripts.pory"
+# 97 "data/maps/EvergreenTown/scripts.pory"
 	setflag FLAG_RECEIVED_EVERGREEN_POTION
-# 77 "data/maps/EvergreenTown/scripts.pory"
+# 98 "data/maps/EvergreenTown/scripts.pory"
 	applymovement 7, EvergreenTown_MovementScript_Boy
-# 78 "data/maps/EvergreenTown/scripts.pory"
+# 99 "data/maps/EvergreenTown/scripts.pory"
 	waitmovement 0
 	goto EvergreenTown_NPCScript_Boy_1
 
 
 EvergreenTown_NPCScript_Fisherman::
-# 101 "data/maps/EvergreenTown/scripts.pory"
+# 122 "data/maps/EvergreenTown/scripts.pory"
 	lock
-# 102 "data/maps/EvergreenTown/scripts.pory"
+# 123 "data/maps/EvergreenTown/scripts.pory"
 	faceplayer
-# 103 "data/maps/EvergreenTown/scripts.pory"
+# 124 "data/maps/EvergreenTown/scripts.pory"
 	msgbox EvergreenTown_NPCScript_Fisherman_Text_0
-# 104 "data/maps/EvergreenTown/scripts.pory"
+# 125 "data/maps/EvergreenTown/scripts.pory"
 	applymovement 4, EvergreenTown_MovementScript_Wingull
-# 105 "data/maps/EvergreenTown/scripts.pory"
+# 126 "data/maps/EvergreenTown/scripts.pory"
 	waitmovement 0
-# 106 "data/maps/EvergreenTown/scripts.pory"
+# 127 "data/maps/EvergreenTown/scripts.pory"
 	playmoncry SPECIES_WINGULL, CRY_MODE_NORMAL
-# 107 "data/maps/EvergreenTown/scripts.pory"
+# 128 "data/maps/EvergreenTown/scripts.pory"
 	waitmoncry
-# 108 "data/maps/EvergreenTown/scripts.pory"
+# 129 "data/maps/EvergreenTown/scripts.pory"
 	applymovement 3, EvergreenTown_MovementScript_Fisherman
-# 109 "data/maps/EvergreenTown/scripts.pory"
+# 130 "data/maps/EvergreenTown/scripts.pory"
 	waitmovement 0
-# 110 "data/maps/EvergreenTown/scripts.pory"
+# 131 "data/maps/EvergreenTown/scripts.pory"
 	msgbox EvergreenTown_NPCScript_Fisherman_Text_1
-# 111 "data/maps/EvergreenTown/scripts.pory"
+# 132 "data/maps/EvergreenTown/scripts.pory"
 	applymovement 4, EvergreenTown_MovementScript_Wingull2
-# 112 "data/maps/EvergreenTown/scripts.pory"
+# 133 "data/maps/EvergreenTown/scripts.pory"
 	waitmovement 0
-# 113 "data/maps/EvergreenTown/scripts.pory"
+# 134 "data/maps/EvergreenTown/scripts.pory"
 	applymovement 3, EvergreenTown_MovementScript_Fisherman2
-# 114 "data/maps/EvergreenTown/scripts.pory"
+# 135 "data/maps/EvergreenTown/scripts.pory"
 	waitmovement 0
-# 115 "data/maps/EvergreenTown/scripts.pory"
+# 136 "data/maps/EvergreenTown/scripts.pory"
 	msgbox EvergreenTown_NPCScript_Fisherman_Text_2
-# 116 "data/maps/EvergreenTown/scripts.pory"
+# 137 "data/maps/EvergreenTown/scripts.pory"
 	applymovement 3, EvergreenTown_MovementScript_Fisherman3
-# 117 "data/maps/EvergreenTown/scripts.pory"
+# 138 "data/maps/EvergreenTown/scripts.pory"
 	waitmovement 0
-# 118 "data/maps/EvergreenTown/scripts.pory"
+# 139 "data/maps/EvergreenTown/scripts.pory"
 	release
 	end
 
 
 EvergreenTown_TriggerScript_StampedeBlock::
-# 125 "data/maps/EvergreenTown/scripts.pory"
+# 146 "data/maps/EvergreenTown/scripts.pory"
 	lock
-# 126 "data/maps/EvergreenTown/scripts.pory"
+# 147 "data/maps/EvergreenTown/scripts.pory"
 	msgbox EvergreenTown_TriggerScript_StampedeBlock_Text_0
-# 127 "data/maps/EvergreenTown/scripts.pory"
+# 148 "data/maps/EvergreenTown/scripts.pory"
 	closemessage
-# 128 "data/maps/EvergreenTown/scripts.pory"
+# 149 "data/maps/EvergreenTown/scripts.pory"
 	applymovement LOCALID_PLAYER, EvergreenTown_MovementScript_Player
-# 129 "data/maps/EvergreenTown/scripts.pory"
+# 150 "data/maps/EvergreenTown/scripts.pory"
 	waitmovement 0
-# 130 "data/maps/EvergreenTown/scripts.pory"
+# 151 "data/maps/EvergreenTown/scripts.pory"
 	release
 	end
 
 
 EvergreenTown_TriggerScript_StampedeBlock2::
-# 136 "data/maps/EvergreenTown/scripts.pory"
+# 157 "data/maps/EvergreenTown/scripts.pory"
 	lock
-# 137 "data/maps/EvergreenTown/scripts.pory"
+# 158 "data/maps/EvergreenTown/scripts.pory"
 	applymovement 8, EvergreenTown_MovementScript_AceTrainer
-# 138 "data/maps/EvergreenTown/scripts.pory"
+# 159 "data/maps/EvergreenTown/scripts.pory"
 	waitmovement 0
-# 139 "data/maps/EvergreenTown/scripts.pory"
+# 160 "data/maps/EvergreenTown/scripts.pory"
 	msgbox EvergreenTown_TriggerScript_StampedeBlock_Text_0
-# 140 "data/maps/EvergreenTown/scripts.pory"
+# 161 "data/maps/EvergreenTown/scripts.pory"
 	closemessage
-# 141 "data/maps/EvergreenTown/scripts.pory"
+# 162 "data/maps/EvergreenTown/scripts.pory"
 	applymovement LOCALID_PLAYER, EvergreenTown_MovementScript_Player
-# 142 "data/maps/EvergreenTown/scripts.pory"
+# 163 "data/maps/EvergreenTown/scripts.pory"
 	waitmovement 0
-# 143 "data/maps/EvergreenTown/scripts.pory"
+# 164 "data/maps/EvergreenTown/scripts.pory"
 	applymovement 8, EvergreenTown_MovementScript_AceTrainer2
-# 144 "data/maps/EvergreenTown/scripts.pory"
+# 165 "data/maps/EvergreenTown/scripts.pory"
 	waitmovement 0
-# 145 "data/maps/EvergreenTown/scripts.pory"
+# 166 "data/maps/EvergreenTown/scripts.pory"
 	release
 	end
 
 
 EvergreenTown_TriggerScript_GotoProfessor::
-# 151 "data/maps/EvergreenTown/scripts.pory"
+# 172 "data/maps/EvergreenTown/scripts.pory"
 	lock
-# 152 "data/maps/EvergreenTown/scripts.pory"
+# 173 "data/maps/EvergreenTown/scripts.pory"
 	msgbox EvergreenTown_TriggerScript_GotoProfessor_Text_0
-# 153 "data/maps/EvergreenTown/scripts.pory"
+# 174 "data/maps/EvergreenTown/scripts.pory"
 	closemessage
-# 154 "data/maps/EvergreenTown/scripts.pory"
+# 175 "data/maps/EvergreenTown/scripts.pory"
 	applymovement LOCALID_PLAYER, EvergreenTown_MovementScript_GotoProfessor
-# 155 "data/maps/EvergreenTown/scripts.pory"
+# 176 "data/maps/EvergreenTown/scripts.pory"
 	waitmovement 0
-# 156 "data/maps/EvergreenTown/scripts.pory"
+# 177 "data/maps/EvergreenTown/scripts.pory"
 	release
 	end
 
 
 EvergreenTown_TriggerScript_RivalMeet::
-# 162 "data/maps/EvergreenTown/scripts.pory"
-	lock
-# 163 "data/maps/EvergreenTown/scripts.pory"
-	opendoor 16, 14
-# 164 "data/maps/EvergreenTown/scripts.pory"
-	waitdooranim
-# 165 "data/maps/EvergreenTown/scripts.pory"
-	addobject 11
-# 166 "data/maps/EvergreenTown/scripts.pory"
-	applymovement 11, EvergreenTown_MovementScript_RivalOutDoor
-# 167 "data/maps/EvergreenTown/scripts.pory"
-	waitmovement 0
-# 168 "data/maps/EvergreenTown/scripts.pory"
-	closedoor 16, 14
-# 169 "data/maps/EvergreenTown/scripts.pory"
-	waitdooranim
-# 170 "data/maps/EvergreenTown/scripts.pory"
-	applymovement 11, EvergreenTown_MovementScript_RivalOut
-# 171 "data/maps/EvergreenTown/scripts.pory"
-	waitmovement 0
-# 172 "data/maps/EvergreenTown/scripts.pory"
-	msgbox EvergreenTown_TriggerScript_RivalMeet_Text_0
-# 173 "data/maps/EvergreenTown/scripts.pory"
-	closemessage
-# 174 "data/maps/EvergreenTown/scripts.pory"
-	applymovement 11, EvergreenTown_MovementScript_RivalIn
-# 175 "data/maps/EvergreenTown/scripts.pory"
-	waitmovement 0
-# 176 "data/maps/EvergreenTown/scripts.pory"
-	opendoor 16, 14
-# 177 "data/maps/EvergreenTown/scripts.pory"
-	waitdooranim
-# 178 "data/maps/EvergreenTown/scripts.pory"
-	applymovement 11, EvergreenTown_MovementScript_RivalInDoor
-# 179 "data/maps/EvergreenTown/scripts.pory"
-	waitmovement 0
-# 180 "data/maps/EvergreenTown/scripts.pory"
-	removeobject 11
-# 181 "data/maps/EvergreenTown/scripts.pory"
-	closedoor 16, 14
-# 182 "data/maps/EvergreenTown/scripts.pory"
-	waitdooranim
 # 183 "data/maps/EvergreenTown/scripts.pory"
-	setvar VAR_RIVAL_STATE, 1
+	lock
 # 184 "data/maps/EvergreenTown/scripts.pory"
+	opendoor 16, 14
+# 185 "data/maps/EvergreenTown/scripts.pory"
+	waitdooranim
+# 186 "data/maps/EvergreenTown/scripts.pory"
+	addobject 11
+# 187 "data/maps/EvergreenTown/scripts.pory"
+	applymovement 11, EvergreenTown_MovementScript_RivalOutDoor
+# 188 "data/maps/EvergreenTown/scripts.pory"
+	waitmovement 0
+# 189 "data/maps/EvergreenTown/scripts.pory"
+	closedoor 16, 14
+# 190 "data/maps/EvergreenTown/scripts.pory"
+	waitdooranim
+# 191 "data/maps/EvergreenTown/scripts.pory"
+	applymovement 11, EvergreenTown_MovementScript_RivalOut
+# 192 "data/maps/EvergreenTown/scripts.pory"
+	waitmovement 0
+# 193 "data/maps/EvergreenTown/scripts.pory"
+	msgbox EvergreenTown_TriggerScript_RivalMeet_Text_0
+# 194 "data/maps/EvergreenTown/scripts.pory"
+	closemessage
+# 195 "data/maps/EvergreenTown/scripts.pory"
+	applymovement 11, EvergreenTown_MovementScript_RivalIn
+# 196 "data/maps/EvergreenTown/scripts.pory"
+	waitmovement 0
+# 197 "data/maps/EvergreenTown/scripts.pory"
+	opendoor 16, 14
+# 198 "data/maps/EvergreenTown/scripts.pory"
+	waitdooranim
+# 199 "data/maps/EvergreenTown/scripts.pory"
+	applymovement 11, EvergreenTown_MovementScript_RivalInDoor
+# 200 "data/maps/EvergreenTown/scripts.pory"
+	waitmovement 0
+# 201 "data/maps/EvergreenTown/scripts.pory"
+	removeobject 11
+# 202 "data/maps/EvergreenTown/scripts.pory"
+	closedoor 16, 14
+# 203 "data/maps/EvergreenTown/scripts.pory"
+	waitdooranim
+# 204 "data/maps/EvergreenTown/scripts.pory"
+	setvar VAR_RIVAL_STATE, 1
+# 205 "data/maps/EvergreenTown/scripts.pory"
 	release
 	end
 
 
 EvergreenTown_TriggerScript_RivalMeet2::
-# 190 "data/maps/EvergreenTown/scripts.pory"
-	lock
-# 191 "data/maps/EvergreenTown/scripts.pory"
-	opendoor 16, 14
-# 192 "data/maps/EvergreenTown/scripts.pory"
-	waitdooranim
-# 193 "data/maps/EvergreenTown/scripts.pory"
-	addobject 11
-# 194 "data/maps/EvergreenTown/scripts.pory"
-	applymovement 11, EvergreenTown_MovementScript_RivalOutDoor
-# 195 "data/maps/EvergreenTown/scripts.pory"
-	waitmovement 0
-# 196 "data/maps/EvergreenTown/scripts.pory"
-	closedoor 16, 14
-# 197 "data/maps/EvergreenTown/scripts.pory"
-	waitdooranim
-# 198 "data/maps/EvergreenTown/scripts.pory"
-	applymovement 11, EvergreenTown_MovementScript_RivalOut2
-# 199 "data/maps/EvergreenTown/scripts.pory"
-	waitmovement 0
-# 200 "data/maps/EvergreenTown/scripts.pory"
-	msgbox EvergreenTown_TriggerScript_RivalMeet_Text_0
-# 201 "data/maps/EvergreenTown/scripts.pory"
-	closemessage
-# 202 "data/maps/EvergreenTown/scripts.pory"
-	applymovement 11, EvergreenTown_MovementScript_RivalIn2
-# 203 "data/maps/EvergreenTown/scripts.pory"
-	waitmovement 0
-# 204 "data/maps/EvergreenTown/scripts.pory"
-	opendoor 16, 14
-# 205 "data/maps/EvergreenTown/scripts.pory"
-	waitdooranim
-# 206 "data/maps/EvergreenTown/scripts.pory"
-	applymovement 11, EvergreenTown_MovementScript_RivalInDoor
-# 207 "data/maps/EvergreenTown/scripts.pory"
-	waitmovement 0
-# 208 "data/maps/EvergreenTown/scripts.pory"
-	removeobject 11
-# 209 "data/maps/EvergreenTown/scripts.pory"
-	closedoor 16, 14
-# 210 "data/maps/EvergreenTown/scripts.pory"
-	waitdooranim
 # 211 "data/maps/EvergreenTown/scripts.pory"
-	setvar VAR_RIVAL_STATE, 1
+	lock
 # 212 "data/maps/EvergreenTown/scripts.pory"
+	opendoor 16, 14
+# 213 "data/maps/EvergreenTown/scripts.pory"
+	waitdooranim
+# 214 "data/maps/EvergreenTown/scripts.pory"
+	addobject 11
+# 215 "data/maps/EvergreenTown/scripts.pory"
+	applymovement 11, EvergreenTown_MovementScript_RivalOutDoor
+# 216 "data/maps/EvergreenTown/scripts.pory"
+	waitmovement 0
+# 217 "data/maps/EvergreenTown/scripts.pory"
+	closedoor 16, 14
+# 218 "data/maps/EvergreenTown/scripts.pory"
+	waitdooranim
+# 219 "data/maps/EvergreenTown/scripts.pory"
+	applymovement 11, EvergreenTown_MovementScript_RivalOut2
+# 220 "data/maps/EvergreenTown/scripts.pory"
+	waitmovement 0
+# 221 "data/maps/EvergreenTown/scripts.pory"
+	msgbox EvergreenTown_TriggerScript_RivalMeet_Text_0
+# 222 "data/maps/EvergreenTown/scripts.pory"
+	closemessage
+# 223 "data/maps/EvergreenTown/scripts.pory"
+	applymovement 11, EvergreenTown_MovementScript_RivalIn2
+# 224 "data/maps/EvergreenTown/scripts.pory"
+	waitmovement 0
+# 225 "data/maps/EvergreenTown/scripts.pory"
+	opendoor 16, 14
+# 226 "data/maps/EvergreenTown/scripts.pory"
+	waitdooranim
+# 227 "data/maps/EvergreenTown/scripts.pory"
+	applymovement 11, EvergreenTown_MovementScript_RivalInDoor
+# 228 "data/maps/EvergreenTown/scripts.pory"
+	waitmovement 0
+# 229 "data/maps/EvergreenTown/scripts.pory"
+	removeobject 11
+# 230 "data/maps/EvergreenTown/scripts.pory"
+	closedoor 16, 14
+# 231 "data/maps/EvergreenTown/scripts.pory"
+	waitdooranim
+# 232 "data/maps/EvergreenTown/scripts.pory"
+	setvar VAR_RIVAL_STATE, 1
+# 233 "data/maps/EvergreenTown/scripts.pory"
 	release
 	end
 
 
 EvergreenTown_TriggerScript_RivalMeet3::
-# 218 "data/maps/EvergreenTown/scripts.pory"
-	lock
-# 219 "data/maps/EvergreenTown/scripts.pory"
-	opendoor 16, 14
-# 220 "data/maps/EvergreenTown/scripts.pory"
-	waitdooranim
-# 221 "data/maps/EvergreenTown/scripts.pory"
-	addobject 11
-# 222 "data/maps/EvergreenTown/scripts.pory"
-	applymovement 11, EvergreenTown_MovementScript_RivalOutDoor
-# 223 "data/maps/EvergreenTown/scripts.pory"
-	waitmovement 0
-# 224 "data/maps/EvergreenTown/scripts.pory"
-	closedoor 16, 14
-# 225 "data/maps/EvergreenTown/scripts.pory"
-	waitdooranim
-# 226 "data/maps/EvergreenTown/scripts.pory"
-	applymovement 11, EvergreenTown_MovementScript_RivalOut3
-# 227 "data/maps/EvergreenTown/scripts.pory"
-	waitmovement 0
-# 228 "data/maps/EvergreenTown/scripts.pory"
-	msgbox EvergreenTown_TriggerScript_RivalMeet_Text_0
-# 229 "data/maps/EvergreenTown/scripts.pory"
-	closemessage
-# 230 "data/maps/EvergreenTown/scripts.pory"
-	applymovement 11, EvergreenTown_MovementScript_RivalIn3
-# 231 "data/maps/EvergreenTown/scripts.pory"
-	waitmovement 0
-# 232 "data/maps/EvergreenTown/scripts.pory"
-	opendoor 16, 14
-# 233 "data/maps/EvergreenTown/scripts.pory"
-	waitdooranim
-# 234 "data/maps/EvergreenTown/scripts.pory"
-	applymovement 11, EvergreenTown_MovementScript_RivalInDoor
-# 235 "data/maps/EvergreenTown/scripts.pory"
-	waitmovement 0
-# 236 "data/maps/EvergreenTown/scripts.pory"
-	removeobject 11
-# 237 "data/maps/EvergreenTown/scripts.pory"
-	closedoor 16, 14
-# 238 "data/maps/EvergreenTown/scripts.pory"
-	waitdooranim
 # 239 "data/maps/EvergreenTown/scripts.pory"
-	setvar VAR_RIVAL_STATE, 1
+	lock
 # 240 "data/maps/EvergreenTown/scripts.pory"
+	opendoor 16, 14
+# 241 "data/maps/EvergreenTown/scripts.pory"
+	waitdooranim
+# 242 "data/maps/EvergreenTown/scripts.pory"
+	addobject 11
+# 243 "data/maps/EvergreenTown/scripts.pory"
+	applymovement 11, EvergreenTown_MovementScript_RivalOutDoor
+# 244 "data/maps/EvergreenTown/scripts.pory"
+	waitmovement 0
+# 245 "data/maps/EvergreenTown/scripts.pory"
+	closedoor 16, 14
+# 246 "data/maps/EvergreenTown/scripts.pory"
+	waitdooranim
+# 247 "data/maps/EvergreenTown/scripts.pory"
+	applymovement 11, EvergreenTown_MovementScript_RivalOut3
+# 248 "data/maps/EvergreenTown/scripts.pory"
+	waitmovement 0
+# 249 "data/maps/EvergreenTown/scripts.pory"
+	msgbox EvergreenTown_TriggerScript_RivalMeet_Text_0
+# 250 "data/maps/EvergreenTown/scripts.pory"
+	closemessage
+# 251 "data/maps/EvergreenTown/scripts.pory"
+	applymovement 11, EvergreenTown_MovementScript_RivalIn3
+# 252 "data/maps/EvergreenTown/scripts.pory"
+	waitmovement 0
+# 253 "data/maps/EvergreenTown/scripts.pory"
+	opendoor 16, 14
+# 254 "data/maps/EvergreenTown/scripts.pory"
+	waitdooranim
+# 255 "data/maps/EvergreenTown/scripts.pory"
+	applymovement 11, EvergreenTown_MovementScript_RivalInDoor
+# 256 "data/maps/EvergreenTown/scripts.pory"
+	waitmovement 0
+# 257 "data/maps/EvergreenTown/scripts.pory"
+	removeobject 11
+# 258 "data/maps/EvergreenTown/scripts.pory"
+	closedoor 16, 14
+# 259 "data/maps/EvergreenTown/scripts.pory"
+	waitdooranim
+# 260 "data/maps/EvergreenTown/scripts.pory"
+	setvar VAR_RIVAL_STATE, 1
+# 261 "data/maps/EvergreenTown/scripts.pory"
 	release
 	end
 
 
-# 245 "data/maps/EvergreenTown/scripts.pory"
-EvergreenTown_MovementScript_Wingull:
-# 247 "data/maps/EvergreenTown/scripts.pory"
-	face_right
-	step_end
-
-# 250 "data/maps/EvergreenTown/scripts.pory"
-EvergreenTown_MovementScript_Wingull2:
-# 252 "data/maps/EvergreenTown/scripts.pory"
-	face_down
-	step_end
-
-# 255 "data/maps/EvergreenTown/scripts.pory"
-EvergreenTown_MovementScript_Fisherman:
-# 257 "data/maps/EvergreenTown/scripts.pory"
-	face_left
-	step_end
-
-# 260 "data/maps/EvergreenTown/scripts.pory"
-EvergreenTown_MovementScript_Fisherman2:
-# 262 "data/maps/EvergreenTown/scripts.pory"
-	face_right
-	step_end
-
-# 265 "data/maps/EvergreenTown/scripts.pory"
-EvergreenTown_MovementScript_Fisherman3:
+EvergreenTown_TriggerScript_FirstRivalBattle::
 # 267 "data/maps/EvergreenTown/scripts.pory"
+	lock
+# 268 "data/maps/EvergreenTown/scripts.pory"
+	addobject 12
+# 269 "data/maps/EvergreenTown/scripts.pory"
+	applymovement 12, EvergreenTown_MovementScript_ToMC
+# 270 "data/maps/EvergreenTown/scripts.pory"
+	waitmovement 0
+# 271 "data/maps/EvergreenTown/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, EvergreenTown_MovementScript_FaceRival
+# 272 "data/maps/EvergreenTown/scripts.pory"
+	waitmovement 0
+# 273 "data/maps/EvergreenTown/scripts.pory"
+	call EvergreenTown_EventScript_EvergreenJacksonBattle
+	return
+
+
+EvergreenTown_TriggerScript_FirstRivalBattle2::
+# 278 "data/maps/EvergreenTown/scripts.pory"
+	lock
+# 279 "data/maps/EvergreenTown/scripts.pory"
+	addobject 12
+# 280 "data/maps/EvergreenTown/scripts.pory"
+	applymovement 12, EvergreenTown_MovementScript_ToMC2
+# 281 "data/maps/EvergreenTown/scripts.pory"
+	waitmovement 0
+# 282 "data/maps/EvergreenTown/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, EvergreenTown_MovementScript_FaceRival
+# 283 "data/maps/EvergreenTown/scripts.pory"
+	waitmovement 0
+# 284 "data/maps/EvergreenTown/scripts.pory"
+	call EvergreenTown_EventScript_EvergreenJacksonBattle
+	return
+
+
+EvergreenTown_SignScript_PlayerHouse::
+# 290 "data/maps/EvergreenTown/scripts.pory"
+	lock
+# 291 "data/maps/EvergreenTown/scripts.pory"
+	msgbox EvergreenTown_SignScript_PlayerHouse_Text_0
+# 292 "data/maps/EvergreenTown/scripts.pory"
+	release
+	end
+
+
+EvergreenTown_SignScript_RivalHouse::
+# 298 "data/maps/EvergreenTown/scripts.pory"
+	lock
+# 299 "data/maps/EvergreenTown/scripts.pory"
+	msgbox EvergreenTown_SignScript_RivalHouse_Text_0
+# 300 "data/maps/EvergreenTown/scripts.pory"
+	release
+	end
+
+
+EvergreenTown_SignScript_ProfessorsLab::
+# 306 "data/maps/EvergreenTown/scripts.pory"
+	lock
+# 307 "data/maps/EvergreenTown/scripts.pory"
+	msgbox EvergreenTown_SignScript_ProfessorsLab_Text_0
+# 308 "data/maps/EvergreenTown/scripts.pory"
+	release
+	end
+
+
+EvergreenTown_SignScript_EvergreenSign::
+# 314 "data/maps/EvergreenTown/scripts.pory"
+	lock
+# 315 "data/maps/EvergreenTown/scripts.pory"
+	msgbox EvergreenTown_SignScript_EvergreenSign_Text_0
+# 316 "data/maps/EvergreenTown/scripts.pory"
+	release
+	end
+
+
+# 321 "data/maps/EvergreenTown/scripts.pory"
+EvergreenTown_MovementScript_Wingull:
+# 323 "data/maps/EvergreenTown/scripts.pory"
+	face_right
+	step_end
+
+# 326 "data/maps/EvergreenTown/scripts.pory"
+EvergreenTown_MovementScript_Wingull2:
+# 328 "data/maps/EvergreenTown/scripts.pory"
 	face_down
 	step_end
 
-# 270 "data/maps/EvergreenTown/scripts.pory"
-EvergreenTown_MovementScript_Boy:
-# 272 "data/maps/EvergreenTown/scripts.pory"
-	face_left
-	step_end
-
-# 275 "data/maps/EvergreenTown/scripts.pory"
-EvergreenTown_MovementScript_Player:
-# 277 "data/maps/EvergreenTown/scripts.pory"
-	walk_left
-	step_end
-
-# 280 "data/maps/EvergreenTown/scripts.pory"
-EvergreenTown_MovementScript_Player2:
-# 282 "data/maps/EvergreenTown/scripts.pory"
-	walk_left
-# 282 "data/maps/EvergreenTown/scripts.pory"
-	walk_left
-	step_end
-
-# 285 "data/maps/EvergreenTown/scripts.pory"
-EvergreenTown_MovementScript_AceTrainer:
-# 287 "data/maps/EvergreenTown/scripts.pory"
-	walk_down
-# 288 "data/maps/EvergreenTown/scripts.pory"
-	face_left
-	step_end
-
-# 291 "data/maps/EvergreenTown/scripts.pory"
-EvergreenTown_MovementScript_AceTrainer2:
-# 293 "data/maps/EvergreenTown/scripts.pory"
-	walk_up
-# 294 "data/maps/EvergreenTown/scripts.pory"
-	face_left
-	step_end
-
-# 297 "data/maps/EvergreenTown/scripts.pory"
-EvergreenTown_MovementScript_GotoProfessor:
-# 299 "data/maps/EvergreenTown/scripts.pory"
-	walk_up
-	step_end
-
-# 302 "data/maps/EvergreenTown/scripts.pory"
-EvergreenTown_MovementScript_RivalOutDoor:
-# 304 "data/maps/EvergreenTown/scripts.pory"
-	walk_down
-	step_end
-
-# 307 "data/maps/EvergreenTown/scripts.pory"
-EvergreenTown_MovementScript_RivalInDoor:
-# 309 "data/maps/EvergreenTown/scripts.pory"
-	walk_up
-	step_end
-
-# 312 "data/maps/EvergreenTown/scripts.pory"
-EvergreenTown_MovementScript_RivalOut:
-# 314 "data/maps/EvergreenTown/scripts.pory"
-	face_left
-	step_end
-
-# 317 "data/maps/EvergreenTown/scripts.pory"
-EvergreenTown_MovementScript_RivalOut2:
-# 319 "data/maps/EvergreenTown/scripts.pory"
-	walk_down
-# 320 "data/maps/EvergreenTown/scripts.pory"
-	face_left
-	step_end
-
-# 323 "data/maps/EvergreenTown/scripts.pory"
-EvergreenTown_MovementScript_RivalOut3:
-# 325 "data/maps/EvergreenTown/scripts.pory"
-	walk_down
-# 325 "data/maps/EvergreenTown/scripts.pory"
-	walk_down
-# 326 "data/maps/EvergreenTown/scripts.pory"
-	face_left
-	step_end
-
-# 329 "data/maps/EvergreenTown/scripts.pory"
-EvergreenTown_MovementScript_RivalIn:
 # 331 "data/maps/EvergreenTown/scripts.pory"
+EvergreenTown_MovementScript_Fisherman:
+# 333 "data/maps/EvergreenTown/scripts.pory"
+	face_left
+	step_end
+
+# 336 "data/maps/EvergreenTown/scripts.pory"
+EvergreenTown_MovementScript_Fisherman2:
+# 338 "data/maps/EvergreenTown/scripts.pory"
+	face_right
+	step_end
+
+# 341 "data/maps/EvergreenTown/scripts.pory"
+EvergreenTown_MovementScript_Fisherman3:
+# 343 "data/maps/EvergreenTown/scripts.pory"
+	face_down
+	step_end
+
+# 346 "data/maps/EvergreenTown/scripts.pory"
+EvergreenTown_MovementScript_Boy:
+# 348 "data/maps/EvergreenTown/scripts.pory"
+	face_left
+	step_end
+
+# 351 "data/maps/EvergreenTown/scripts.pory"
+EvergreenTown_MovementScript_Player:
+# 353 "data/maps/EvergreenTown/scripts.pory"
+	walk_left
+	step_end
+
+# 356 "data/maps/EvergreenTown/scripts.pory"
+EvergreenTown_MovementScript_Player2:
+# 358 "data/maps/EvergreenTown/scripts.pory"
+	walk_left
+# 358 "data/maps/EvergreenTown/scripts.pory"
+	walk_left
+	step_end
+
+# 361 "data/maps/EvergreenTown/scripts.pory"
+EvergreenTown_MovementScript_AceTrainer:
+# 363 "data/maps/EvergreenTown/scripts.pory"
+	walk_down
+# 364 "data/maps/EvergreenTown/scripts.pory"
+	face_left
+	step_end
+
+# 367 "data/maps/EvergreenTown/scripts.pory"
+EvergreenTown_MovementScript_AceTrainer2:
+# 369 "data/maps/EvergreenTown/scripts.pory"
+	walk_up
+# 370 "data/maps/EvergreenTown/scripts.pory"
+	face_left
+	step_end
+
+# 373 "data/maps/EvergreenTown/scripts.pory"
+EvergreenTown_MovementScript_GotoProfessor:
+# 375 "data/maps/EvergreenTown/scripts.pory"
+	walk_up
+	step_end
+
+# 378 "data/maps/EvergreenTown/scripts.pory"
+EvergreenTown_MovementScript_RivalOutDoor:
+# 380 "data/maps/EvergreenTown/scripts.pory"
+	walk_down
+	step_end
+
+# 383 "data/maps/EvergreenTown/scripts.pory"
+EvergreenTown_MovementScript_RivalInDoor:
+# 385 "data/maps/EvergreenTown/scripts.pory"
+	walk_up
+	step_end
+
+# 388 "data/maps/EvergreenTown/scripts.pory"
+EvergreenTown_MovementScript_RivalOut:
+# 390 "data/maps/EvergreenTown/scripts.pory"
+	face_left
+	step_end
+
+# 393 "data/maps/EvergreenTown/scripts.pory"
+EvergreenTown_MovementScript_RivalOut2:
+# 395 "data/maps/EvergreenTown/scripts.pory"
+	walk_down
+# 396 "data/maps/EvergreenTown/scripts.pory"
+	face_left
+	step_end
+
+# 399 "data/maps/EvergreenTown/scripts.pory"
+EvergreenTown_MovementScript_RivalOut3:
+# 401 "data/maps/EvergreenTown/scripts.pory"
+	walk_down
+# 401 "data/maps/EvergreenTown/scripts.pory"
+	walk_down
+# 402 "data/maps/EvergreenTown/scripts.pory"
+	face_left
+	step_end
+
+# 405 "data/maps/EvergreenTown/scripts.pory"
+EvergreenTown_MovementScript_RivalIn:
+# 407 "data/maps/EvergreenTown/scripts.pory"
 	face_up
 	step_end
 
-# 334 "data/maps/EvergreenTown/scripts.pory"
+# 410 "data/maps/EvergreenTown/scripts.pory"
 EvergreenTown_MovementScript_RivalIn2:
-# 336 "data/maps/EvergreenTown/scripts.pory"
+# 412 "data/maps/EvergreenTown/scripts.pory"
 	walk_up
 	step_end
 
-# 339 "data/maps/EvergreenTown/scripts.pory"
+# 415 "data/maps/EvergreenTown/scripts.pory"
 EvergreenTown_MovementScript_RivalIn3:
-# 341 "data/maps/EvergreenTown/scripts.pory"
+# 417 "data/maps/EvergreenTown/scripts.pory"
 	walk_up
-# 341 "data/maps/EvergreenTown/scripts.pory"
+# 417 "data/maps/EvergreenTown/scripts.pory"
 	walk_up
 	step_end
 
-EvergreenTown_SignScript_PlayerHouse_Text_0:
-# 17 "data/maps/EvergreenTown/scripts.pory"
-	.string "{PLAYER}'s House...$"
+# 420 "data/maps/EvergreenTown/scripts.pory"
+EvergreenTown_MovementScript_ToMC:
+# 422 "data/maps/EvergreenTown/scripts.pory"
+	walk_down
+# 422 "data/maps/EvergreenTown/scripts.pory"
+	walk_down
+# 422 "data/maps/EvergreenTown/scripts.pory"
+	walk_down
+# 422 "data/maps/EvergreenTown/scripts.pory"
+	walk_down
+# 422 "data/maps/EvergreenTown/scripts.pory"
+	walk_down
+	step_end
 
-EvergreenTown_SignScript_RivalHouse_Text_0:
-# 25 "data/maps/EvergreenTown/scripts.pory"
-	.string "Rival's House...$"
+# 425 "data/maps/EvergreenTown/scripts.pory"
+EvergreenTown_MovementScript_ToMC2:
+# 427 "data/maps/EvergreenTown/scripts.pory"
+	walk_right
+# 428 "data/maps/EvergreenTown/scripts.pory"
+	walk_down
+# 428 "data/maps/EvergreenTown/scripts.pory"
+	walk_down
+# 428 "data/maps/EvergreenTown/scripts.pory"
+	walk_down
+# 428 "data/maps/EvergreenTown/scripts.pory"
+	walk_down
+# 428 "data/maps/EvergreenTown/scripts.pory"
+	walk_down
+	step_end
 
-EvergreenTown_SignScript_ProfessorsLab_Text_0:
-# 33 "data/maps/EvergreenTown/scripts.pory"
-	.string "Professor Sequioa's Lab...$"
+# 431 "data/maps/EvergreenTown/scripts.pory"
+EvergreenTown_MovementScript_FaceRival:
+# 433 "data/maps/EvergreenTown/scripts.pory"
+	face_up
+	step_end
 
-EvergreenTown_SignScript_EvergreenSign_Text_0:
-# 41 "data/maps/EvergreenTown/scripts.pory"
-	.string "Evergreen Town, a lush homey\n"
-	.string "atmosphere.$"
+# 436 "data/maps/EvergreenTown/scripts.pory"
+EvergreenTown_MovementScript_RivalAway:
+# 438 "data/maps/EvergreenTown/scripts.pory"
+	walk_up
+# 438 "data/maps/EvergreenTown/scripts.pory"
+	walk_up
+# 438 "data/maps/EvergreenTown/scripts.pory"
+	walk_up
+# 438 "data/maps/EvergreenTown/scripts.pory"
+	walk_up
+# 438 "data/maps/EvergreenTown/scripts.pory"
+	walk_up
+	step_end
+
+EvergreenTown_EventScript_EvergreenJacksonBattle_Text_0:
+# 38 "data/maps/EvergreenTown/scripts.pory"
+	.string "Jackson: That was a rush, you did really\n"
+	.string "well!\p"
+	.string "Our next battle will be even more\n"
+	.string "amazing, I can tell.\p"
+	.string "Be safe bro and see you again soon!$"
+
+EvergreenTown_EventScript_EvergreenJacksonBeaten_Text_0:
+# 57 "data/maps/EvergreenTown/scripts.pory"
+	.string "Jackson: You're really good at this. It\n"
+	.string "was a blast to fight you!\p"
+	.string "I'll make sure to get better and improve\n"
+	.string "my team then challenge you again.\p"
+	.string "Be safe bro.$"
 
 EvergreenTown_NPCScript_OldMan_Text_0:
-# 51 "data/maps/EvergreenTown/scripts.pory"
+# 72 "data/maps/EvergreenTown/scripts.pory"
 	.string "Hello there, {PLAYER}! I can never get\n"
 	.string "enough of how beautiful this town is.\p"
 	.string "Good luck on your future endeavors!$"
 
 EvergreenTown_NPCScript_Beauty_Text_0:
-# 60 "data/maps/EvergreenTown/scripts.pory"
+# 81 "data/maps/EvergreenTown/scripts.pory"
 	.string "These flowers here are so pretty. I\n"
 	.string "want to grow ones like these at my home.$"
 
 EvergreenTown_NPCScript_Boy_Text_0:
-# 71 "data/maps/EvergreenTown/scripts.pory"
+# 92 "data/maps/EvergreenTown/scripts.pory"
 	.string "I'm trying to surprise this girl over on\n"
 	.string "the other side of town with these\l"
 	.string "flowers I found, will you go away?$"
 
 EvergreenTown_NPCScript_Boy_Text_1:
-# 74 "data/maps/EvergreenTown/scripts.pory"
+# 95 "data/maps/EvergreenTown/scripts.pory"
 	.string "Thanks.\p"
 	.string "Here's a potion for your troubles...$"
 
 EvergreenTown_NPCScript_Boy_Text_2:
-# 82 "data/maps/EvergreenTown/scripts.pory"
+# 103 "data/maps/EvergreenTown/scripts.pory"
 	.string "Ugh!\p"
 	.string "Take this and leave...$"
 
 EvergreenTown_NPCScript_Boy_Text_3:
-# 91 "data/maps/EvergreenTown/scripts.pory"
+# 112 "data/maps/EvergreenTown/scripts.pory"
 	.string "Stop bothering me.$"
 
 EvergreenTown_NPCScript_Fisherman_Text_0:
-# 103 "data/maps/EvergreenTown/scripts.pory"
+# 124 "data/maps/EvergreenTown/scripts.pory"
 	.string "Fishing here is so calming. I love coming\n"
 	.string "here with my best buddy Wingull!$"
 
 EvergreenTown_NPCScript_Fisherman_Text_1:
-# 110 "data/maps/EvergreenTown/scripts.pory"
+# 131 "data/maps/EvergreenTown/scripts.pory"
 	.string "I'm glad to hear you agree buddy!$"
 
 EvergreenTown_NPCScript_Fisherman_Text_2:
-# 115 "data/maps/EvergreenTown/scripts.pory"
+# 136 "data/maps/EvergreenTown/scripts.pory"
 	.string "Isn't he the coolest?$"
 
 EvergreenTown_TriggerScript_StampedeBlock_Text_0:
-# 126 "data/maps/EvergreenTown/scripts.pory"
+# 147 "data/maps/EvergreenTown/scripts.pory"
 	.string "I can't let you pass right now. There's\n"
 	.string "been a stampede that's been wreaking\l"
 	.string "havoc here. Once it's been routed,\l"
 	.string "people can go through again.$"
 
 EvergreenTown_TriggerScript_GotoProfessor_Text_0:
-# 152 "data/maps/EvergreenTown/scripts.pory"
+# 173 "data/maps/EvergreenTown/scripts.pory"
 	.string "The Professor asked for you. Now's not\n"
 	.string "the time to be leaving the town.$"
 
 EvergreenTown_TriggerScript_RivalMeet_Text_0:
-# 172 "data/maps/EvergreenTown/scripts.pory"
-	.string "Rival: Yo, {PLAYER}! I heard that\n"
+# 193 "data/maps/EvergreenTown/scripts.pory"
+	.string "Jackson: Yo, {PLAYER}! I heard that\n"
 	.string "you're going to be doing something for\l"
 	.string "the professor. I recently just got my\l"
 	.string "starter and plan on fighting the gyms\l"
@@ -588,3 +764,30 @@ EvergreenTown_TriggerScript_RivalMeet_Text_0:
 	.string "Wait for me right before route 1 and I'll\n"
 	.string "come to you.\p"
 	.string "See ya!$"
+
+EvergreenTown_SignScript_PlayerHouse_Text_0:
+# 291 "data/maps/EvergreenTown/scripts.pory"
+	.string "{PLAYER}'s House...$"
+
+EvergreenTown_SignScript_RivalHouse_Text_0:
+# 299 "data/maps/EvergreenTown/scripts.pory"
+	.string "Rival's House...$"
+
+EvergreenTown_SignScript_ProfessorsLab_Text_0:
+# 307 "data/maps/EvergreenTown/scripts.pory"
+	.string "Professor Sequioa's Lab...$"
+
+EvergreenTown_SignScript_EvergreenSign_Text_0:
+# 315 "data/maps/EvergreenTown/scripts.pory"
+	.string "Evergreen Town, a lush homey\n"
+	.string "atmosphere.$"
+
+EvergreenTown_TextScript_RivalIntro::
+# 442 "data/maps/EvergreenTown/scripts.pory"
+	.string "Jackson: Hey {PLAYER}, are you ready\n"
+	.string "to have our battle? I've wanted to do\l"
+	.string "this for a long time!$"
+
+EvergreenTown_TextScript_RivalBattleFinished::
+# 447 "data/maps/EvergreenTown/scripts.pory"
+	.string "Good game, that was fun!$"

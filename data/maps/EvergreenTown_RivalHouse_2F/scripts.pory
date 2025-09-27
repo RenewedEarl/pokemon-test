@@ -5,7 +5,7 @@ script EvergreenTown_RivalHouse_2F_NPCScript_Rival
 {
     lock
     faceplayer
-    msgbox(format("Hey {PLAYER}, what are you doing here instead of at the lab?\pI'm just getting my exercise in before we have our battle.\pGo see the professor so you're not keeping him waiting."))
+    msgbox(format("Jackson: Hey {PLAYER}, what are you doing here instead of at the lab?\pI'm just getting my exercise in before we have our battle.\pGo see the professor so you're not keeping him waiting."))
     release
     end
 }

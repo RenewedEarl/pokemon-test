@@ -56,8 +56,8 @@ EvergreenTown_RivalHouse_2F_SignScript_Notebook::
 
 EvergreenTown_RivalHouse_2F_NPCScript_Rival_Text_0:
 # 8 "data/maps/EvergreenTown_RivalHouse_2F/scripts.pory"
-	.string "Hey {PLAYER}, what are you doing here\n"
-	.string "instead of at the lab?\p"
+	.string "Jackson: Hey {PLAYER}, what are you\n"
+	.string "doing here instead of at the lab?\p"
 	.string "I'm just getting my exercise in before\n"
 	.string "we have our battle.\p"
 	.string "Go see the professor so you're not\n"
