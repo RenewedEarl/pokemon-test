@@ -4470,6 +4470,16 @@
       "secondary_tileset": "gTileset_Lab",
       "border_filepath": "data/layouts/EvergreenTown_ProfSequoiasLab/border.bin",
       "blockdata_filepath": "data/layouts/EvergreenTown_ProfSequoiasLab/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE1",
+      "name": "Route1_Layout",
+      "width": 30,
+      "height": 30,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Route1/border.bin",
+      "blockdata_filepath": "data/layouts/Route1/map.bin"
     }
   ]
 }

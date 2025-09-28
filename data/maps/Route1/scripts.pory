@@ -1,0 +1,9 @@
+mapscripts Route1_MapScripts {}
+
+// Event Scripts
+script Route_1_EventScript_Youngster_Battle{}
+
+script Route_1_EventScript_Lass_Battle{}
+
+// NPC Scripts
+script Route_1_NPCScript_Fisherman{}
