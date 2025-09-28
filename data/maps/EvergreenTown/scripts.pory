@@ -42,12 +42,16 @@ script EvergreenTown_EventScript_EvergreenJacksonBattle
             removeobject(12)
             special(HealPlayerParty)
             setvar(VAR_RIVAL_STATE, 2)
+            setflag(FLAG_RIVAL_HOUSE_VISIBILITY)
+            setflag(FLAG_HEAL_MACHINE_USABLE)
             clearflag(FLAG_NO_WHITEOUT)
             release
             end
         }
     }
     special(HealPlayerParty)
+    setflag(FLAG_RIVAL_HOUSE_VISIBILITY)
+    setflag(FLAG_HEAL_MACHINE_USABLE)
     clearflag(FLAG_NO_WHITEOUT)
     call(EvergreenTown_EventScript_EvergreenJacksonBeaten)
 }

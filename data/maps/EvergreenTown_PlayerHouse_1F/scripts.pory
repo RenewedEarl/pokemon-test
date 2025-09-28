@@ -1,8 +1,15 @@
 mapscripts EvergreenTown_PlayerHouse_1F_MapScripts 
 {
+    MAP_SCRIPT_ON_TRANSITION: EvergreenTown_PlayerHouse_1F_OnTransition
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_PLAYER_HOUSE_INTRO_STATE, 1: EvergreenTown_PlayerHouse_1F_EventScript_CheckWithMom
     ]
+}
+
+script EvergreenTown_PlayerHouse_1F_OnTransition
+{
+    setrespawn(HEAL_LOCATION_EVERGREEN_TOWN)
+    end
 }
 
 // Event Scripts

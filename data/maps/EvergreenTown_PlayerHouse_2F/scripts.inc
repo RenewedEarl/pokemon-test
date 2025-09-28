@@ -63,7 +63,7 @@ EvergreenTown_PlayerHouse_2F_EventScript_BeginningScene::
 # 42 "data/maps/EvergreenTown_PlayerHouse_2F/scripts.pory"
 	giveitem ITEM_POKE_BALL, 10
 # 43 "data/maps/EvergreenTown_PlayerHouse_2F/scripts.pory"
-	giveitem ITEM_LAVA_COOKIE, 5
+	giveitem ITEM_ESCAPE_ROPE, 1
 # 44 "data/maps/EvergreenTown_PlayerHouse_2F/scripts.pory"
 	setvar VAR_PLAYER_HOUSE_INTRO_STATE, 1
 # 45 "data/maps/EvergreenTown_PlayerHouse_2F/scripts.pory"

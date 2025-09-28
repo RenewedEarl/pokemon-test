@@ -1,9 +1,63 @@
 mapscripts Route1_MapScripts {}
 
 // Event Scripts
-script Route_1_EventScript_Youngster_Battle{}
+script Route_1_EventScript_Youngster_Battle
+{
+    trainerbattle_single(TRAINER_JOHNNY, Route_1_TextScript_Youngster_Intro, Route_1_TextScript_Youngster_Loss)
+    msgbox(format("I'll be stronger, just you wait!"))
+    release
+    end
+}
 
-script Route_1_EventScript_Lass_Battle{}
+script Route_1_EventScript_Lass_Battle
+{
+    trainerbattle_single(TRAINER_ELLA, Route_1_TextScript_Lass_Intro, Route_1_TextScript_Lass_Loss)
+    msgbox(format("You're something else..."))
+    release
+    end
+}
 
 // NPC Scripts
-script Route_1_NPCScript_Fisherman{}
+script Route_1_NPCScript_Fisherman
+{
+    lock
+    faceplayer
+    if(!(flag(FLAG_RECEIVED_OLD_ROD)))
+    {
+        msgbox(format("You look like someone who could use this extra rod I have. There's some solid Pokemon to find in the water with the right rod."))
+        giveitem(ITEM_OLD_ROD)
+        if(var(VAR_RESULT) == FALSE)
+        {
+            goto(Common_EventScript_ShowBagIsFull)
+        }
+        setflag(FLAG_RECEIVED_OLD_ROD)
+        msgbox(format("Just face the water and use the rod, then pull when you catch something. Happy Fishing!"))
+    }
+    else
+    {
+        msgbox(format("How has the rod been treating you? I hope it's doing well."))
+    }
+    release
+    end
+}
+
+// Text Scripts
+text Route_1_TextScript_Youngster_Intro
+{
+    format("My team is pretty good so far, I want to test it on you!")
+}
+
+text Route_1_TextScript_Youngster_Loss
+{
+    "Damn, you're strong."
+}
+
+text Route_1_TextScript_Lass_Intro
+{
+    format("My jigglypuff wants to get out and exercise. Please be good enough to help.")
+}
+
+text Route_1_TextScript_Lass_Loss
+{
+    "You were too good."
+}

@@ -1,7 +1,20 @@
 mapscripts EvergreenTown_ProfSequoiasLab_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION: EvergreenTown_ProfSequoiasLab_OnTransition
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_EVERGREEN_PROF_STATE, 0: EvergreenTown_ProfSequoiasLab_EventScript_ProfGreeting
     ]
+}
+
+script EvergreenTown_ProfSequoiasLab_OnTransition
+{
+    if(!(flag(FLAG_RIVAL_HOUSE_VISIBILITY)))
+    {
+        setflag(FLAG_RIVAL_LAB_VISIBILITY)
+    }
+    else
+    {
+        clearflag(FLAG_RIVAL_LAB_VISIBILITY)
+    }
 }
 
 // Event Scripts
@@ -260,6 +273,27 @@ script EvergreenTown_ProfSequoiasLab_NPCScript_Professor
     }
 }
 
+script EvergreenTown_ProfSequoiasLab_NPCScript_Aide
+{
+    lock
+    faceplayer
+    msgbox(format("I assist the professor in managing his large amounts of data. It's really nice to get to see a lot of the information that comes through here."))
+    release
+    end
+}
+
+script EvergreenTown_ProfSequoiasLab_NPCScript_Rival
+{
+    lock
+    faceplayer
+    msgbox(format("Jackson: What's up, {PLAYER}! I'm just reading up on some strategies while you run your errand.\pI'll be much better prepared for our next battle!"))
+    closemessage
+    applymovement(5, EvergreenTown_ProfSequoiasLab_MovementScript_FaceBookshelf)
+    waitmovement(0)
+    release
+    end
+}
+
 // Trigger Scripts
 script EvergreenTown_ProfSequoiasLab_TriggerScript_BackToStarter
 {
@@ -268,6 +302,37 @@ script EvergreenTown_ProfSequoiasLab_TriggerScript_BackToStarter
     closemessage
     applymovement(LOCALID_PLAYER, EvergreenTown_ProfSequoiasLab_MovementScript_GetStarter)
     waitmovement(0)
+    release
+    end
+}
+
+// Sign Scripts
+script EvergreenTown_ProfSequoiasLab_SignScript_HealingMachine
+{
+    lock
+    if(flag(FLAG_HEAL_MACHINE_USABLE))
+    {
+        msgbox(format("This is the healing machine the professor mentioned, do you want to heal?"), MSGBOX_YESNO)
+        closemessage
+        if(var(VAR_RESULT) == YES)
+        {
+            special(HealPlayerParty)
+            fadescreen(FADE_TO_BLACK)
+            playfanfare(MUS_HEAL)
+            waitse
+            fadescreen(FADE_FROM_BLACK)
+            msgbox(format("Your Pokemon are now healed!"))
+            closemessage
+        }
+        else
+        {
+            msgbox(format("At least this is here..."))
+        }
+    }
+    else
+    {
+        msgbox(format("You can't use this machine right now."))
+    }
     release
     end
 }
@@ -340,4 +405,9 @@ movement EvergreenTown_ProfSequoiasLab_MovementScript_FaceProf
 movement EvergreenTown_ProfSequoiasLab_MovementScript_GetStarter
 {
     walk_up
+}
+
+movement EvergreenTown_ProfSequoiasLab_MovementScript_FaceBookshelf
+{
+    face_up
 }

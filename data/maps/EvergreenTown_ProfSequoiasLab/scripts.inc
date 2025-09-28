@@ -1,541 +1,634 @@
 EvergreenTown_ProfSequoiasLab_MapScripts::
 # 2 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	map_script MAP_SCRIPT_ON_TRANSITION, EvergreenTown_ProfSequoiasLab_OnTransition
+# 3 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, EvergreenTown_ProfSequoiasLab_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
 EvergreenTown_ProfSequoiasLab_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-# 3 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 4 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	map_script_2 VAR_EVERGREEN_PROF_STATE, 0, EvergreenTown_ProfSequoiasLab_EventScript_ProfGreeting
 	.2byte 0
 
 
-EvergreenTown_ProfSequoiasLab_EventScript_ProfGreeting::
+EvergreenTown_ProfSequoiasLab_OnTransition::
 # 10 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
-	lock
-# 11 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
-	msgbox EvergreenTown_ProfSequoiasLab_EventScript_ProfGreeting_Text_0
-# 12 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
-	closemessage
-# 13 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
-	applymovement LOCALID_PLAYER, EvergreenTown_ProfSequoiasLab_MovementScript_GreetProf
-# 14 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
-	waitmovement 0
-# 15 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
-	msgbox EvergreenTown_ProfSequoiasLab_EventScript_ProfGreeting_Text_1
+	goto_if_unset FLAG_RIVAL_HOUSE_VISIBILITY, EvergreenTown_ProfSequoiasLab_OnTransition_1
 # 16 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	clearflag FLAG_RIVAL_LAB_VISIBILITY
+	return
+
+EvergreenTown_ProfSequoiasLab_OnTransition_1:
+# 12 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	setflag FLAG_RIVAL_LAB_VISIBILITY
+	return
+
+
+EvergreenTown_ProfSequoiasLab_EventScript_ProfGreeting::
+# 23 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	lock
+# 24 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	msgbox EvergreenTown_ProfSequoiasLab_EventScript_ProfGreeting_Text_0
+# 25 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	closemessage
-# 17 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
-	applymovement LOCALID_PLAYER, EvergreenTown_ProfSequoiasLab_MovementScript_CheckStarters
-# 18 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
-	applymovement 1, EvergreenTown_ProfSequoiasLab_MovementScript_ProfShowStarters
-# 19 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 26 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	applymovement LOCALID_PLAYER, EvergreenTown_ProfSequoiasLab_MovementScript_GreetProf
+# 27 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	waitmovement 0
-# 20 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 28 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	msgbox EvergreenTown_ProfSequoiasLab_EventScript_ProfGreeting_Text_1
+# 29 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	closemessage
+# 30 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	applymovement LOCALID_PLAYER, EvergreenTown_ProfSequoiasLab_MovementScript_CheckStarters
+# 31 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	applymovement 1, EvergreenTown_ProfSequoiasLab_MovementScript_ProfShowStarters
+# 32 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	waitmovement 0
+# 33 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_EventScript_ProfGreeting_Text_2
-# 21 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 34 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	setvar VAR_EVERGREEN_PROF_STATE, 1
-# 22 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 35 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	release
 	end
 
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne::
-# 28 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 41 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	lock
-# 29 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 42 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	goto_if_unset FLAG_SYS_POKEMON_GET, EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_2
-# 72 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 85 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_Text_4
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_1:
-# 74 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 87 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	release
 	end
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_2:
-# 31 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 44 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	showmonpic SPECIES_DUSKULL, 10, 3
-# 32 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 45 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_Text_0, MSGBOX_YESNO
-# 33 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 46 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_6
-# 64 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 77 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	hidemonpic
-# 65 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 78 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_Text_3
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_5:
-# 67 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 80 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	waitmessage
-# 68 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 81 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	setvar VAR_EVERGREEN_PROF_STATE, 2
 	goto EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_1
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_6:
-# 35 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 48 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	givemon SPECIES_DUSKULL, 5, ITEM_ORAN_BERRY, hpIv = 31, atkIv = 31, defIv = 31, speedIv = 31, spAtkIv = 31, spDefIv = 31
-# 36 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 49 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	compare VAR_RESULT, MON_GIVEN_TO_PARTY
 	goto_if_eq EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_9
-# 46 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 59 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	compare VAR_RESULT, MON_GIVEN_TO_PC
 	goto_if_eq EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_10
-# 58 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 71 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	hidemonpic
-# 59 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 72 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_Text_2
 	goto EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_5
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_9:
-# 38 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 51 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	playfanfare MUS_OBTAIN_ITEM
-# 39 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 52 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_Text_1
-# 40 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 53 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	removeobject 2
-# 41 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 54 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	setflag FLAG_STARTER_BALL_ONE
-# 42 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 55 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	setflag FLAG_SYS_POKEMON_GET
-# 43 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 56 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	call EvergreenTown_ProfSequoiasLab_ProcessScript_NicknamePartyMon
-# 44 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 57 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	call EvergreenTown_ProfSequoiasLab_EventScript_AfterStarter
 	goto EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_5
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_10:
-# 48 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 61 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	playfanfare MUS_OBTAIN_ITEM
-# 49 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 62 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_Text_1
-# 50 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 63 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	removeobject 2
-# 51 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 64 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	setflag FLAG_STARTER_BALL_TWO
-# 52 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 65 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	setflag FLAG_SYS_POKEMON_GET
-# 53 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 66 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	call EvergreenTown_ProfSequoiasLab_ProcessScript_NicknameBoxMon
-# 54 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 67 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	call EvergreenTown_ProfSequoiasLab_EventScript_AfterStarter
 	goto EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_5
 
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallTwo::
-# 80 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 93 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	lock
-# 81 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 94 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	goto_if_unset FLAG_SYS_POKEMON_GET, EvergreenTown_ProfSequoiasLab_EventScript_StarterBallTwo_2
-# 124 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 137 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_Text_4
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallTwo_1:
-# 126 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 139 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	release
 	end
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallTwo_2:
-# 83 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 96 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	showmonpic SPECIES_IMPIDIMP, 10, 3
-# 84 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 97 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_EventScript_StarterBallTwo_Text_0, MSGBOX_YESNO
-# 85 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 98 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq EvergreenTown_ProfSequoiasLab_EventScript_StarterBallTwo_6
-# 116 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 129 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	hidemonpic
-# 117 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 130 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_Text_3
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallTwo_5:
-# 119 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 132 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	waitmessage
-# 120 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 133 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	setvar VAR_EVERGREEN_PROF_STATE, 2
 	goto EvergreenTown_ProfSequoiasLab_EventScript_StarterBallTwo_1
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallTwo_6:
-# 87 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 100 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	givemon SPECIES_IMPIDIMP, 5, ITEM_ORAN_BERRY, hpIv = 31, atkIv = 31, defIv = 31, speedIv = 31, spAtkIv = 31, spDefIv = 31
-# 88 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 101 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	compare VAR_RESULT, MON_GIVEN_TO_PARTY
 	goto_if_eq EvergreenTown_ProfSequoiasLab_EventScript_StarterBallTwo_9
-# 98 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 111 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	compare VAR_RESULT, MON_GIVEN_TO_PC
 	goto_if_eq EvergreenTown_ProfSequoiasLab_EventScript_StarterBallTwo_10
-# 110 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 123 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	hidemonpic
-# 111 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 124 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_Text_2
 	goto EvergreenTown_ProfSequoiasLab_EventScript_StarterBallTwo_5
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallTwo_9:
-# 90 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 103 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	playfanfare MUS_OBTAIN_ITEM
-# 91 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 104 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_EventScript_StarterBallTwo_Text_1
-# 92 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 105 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	removeobject 3
-# 93 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 106 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	setflag FLAG_STARTER_BALL_TWO
-# 94 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 107 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	setflag FLAG_SYS_POKEMON_GET
-# 95 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 108 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	call EvergreenTown_ProfSequoiasLab_ProcessScript_NicknamePartyMon
-# 96 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 109 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	call EvergreenTown_ProfSequoiasLab_EventScript_AfterStarter2
 	goto EvergreenTown_ProfSequoiasLab_EventScript_StarterBallTwo_5
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallTwo_10:
-# 100 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 113 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	playfanfare MUS_OBTAIN_ITEM
-# 101 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 114 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_EventScript_StarterBallTwo_Text_1
-# 102 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 115 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	removeobject 3
-# 103 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 116 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	setflag FLAG_STARTER_BALL_TWO
-# 104 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 117 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	setflag FLAG_SYS_POKEMON_GET
-# 105 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 118 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	call EvergreenTown_ProfSequoiasLab_ProcessScript_NicknameBoxMon
-# 106 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 119 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	call EvergreenTown_ProfSequoiasLab_EventScript_AfterStarter2
 	goto EvergreenTown_ProfSequoiasLab_EventScript_StarterBallTwo_5
 
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallThree::
-# 132 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 145 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	lock
-# 133 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 146 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	goto_if_unset FLAG_SYS_POKEMON_GET, EvergreenTown_ProfSequoiasLab_EventScript_StarterBallThree_2
-# 176 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 189 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_EventScript_StarterBallThree_Text_2
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallThree_1:
-# 178 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 191 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	release
 	end
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallThree_2:
-# 135 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 148 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	showmonpic SPECIES_BELDUM, 10, 3
-# 136 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 149 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_EventScript_StarterBallThree_Text_0, MSGBOX_YESNO
-# 137 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 150 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq EvergreenTown_ProfSequoiasLab_EventScript_StarterBallThree_6
-# 168 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 181 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	hidemonpic
-# 169 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 182 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_Text_3
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallThree_5:
-# 171 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 184 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	waitmessage
-# 172 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 185 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	setvar VAR_EVERGREEN_PROF_STATE, 2
 	goto EvergreenTown_ProfSequoiasLab_EventScript_StarterBallThree_1
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallThree_6:
-# 139 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 152 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	givemon SPECIES_BELDUM, 5, ITEM_ORAN_BERRY, hpIv = 31, atkIv = 31, defIv = 31, speedIv = 31, spAtkIv = 31, spDefIv = 31
-# 140 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 153 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	compare VAR_RESULT, MON_GIVEN_TO_PARTY
 	goto_if_eq EvergreenTown_ProfSequoiasLab_EventScript_StarterBallThree_9
-# 150 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 163 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	compare VAR_RESULT, MON_GIVEN_TO_PC
 	goto_if_eq EvergreenTown_ProfSequoiasLab_EventScript_StarterBallThree_10
-# 162 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 175 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	hidemonpic
-# 163 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 176 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_Text_2
 	goto EvergreenTown_ProfSequoiasLab_EventScript_StarterBallThree_5
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallThree_9:
-# 142 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 155 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	playfanfare MUS_OBTAIN_ITEM
-# 143 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 156 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_EventScript_StarterBallThree_Text_1
-# 144 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 157 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	removeobject 4
-# 145 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 158 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	setflag FLAG_STARTER_BALL_THREE
-# 146 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 159 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	setflag FLAG_SYS_POKEMON_GET
-# 147 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 160 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	call EvergreenTown_ProfSequoiasLab_ProcessScript_NicknamePartyMon
-# 148 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 161 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	call EvergreenTown_ProfSequoiasLab_EventScript_AfterStarter3
 	goto EvergreenTown_ProfSequoiasLab_EventScript_StarterBallThree_5
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallThree_10:
-# 152 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 165 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	playfanfare MUS_OBTAIN_ITEM
-# 153 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 166 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_EventScript_StarterBallThree_Text_1
-# 154 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 167 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	removeobject 4
-# 155 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 168 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	setflag FLAG_STARTER_BALL_THREE
-# 156 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 169 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	setflag FLAG_SYS_POKEMON_GET
-# 157 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 170 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	call EvergreenTown_ProfSequoiasLab_ProcessScript_NicknameBoxMon
-# 158 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 171 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	call EvergreenTown_ProfSequoiasLab_EventScript_AfterStarter3
 	goto EvergreenTown_ProfSequoiasLab_EventScript_StarterBallThree_5
 
 
 EvergreenTown_ProfSequoiasLab_EventScript_AfterStarter::
-# 184 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 197 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	applymovement 1, EvergreenTown_ProfSequoiasLab_MovementScript_AfterStarterCongrats
-# 185 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 198 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	waitmovement 0
-# 186 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 199 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	applymovement LOCALID_PLAYER, EvergreenTown_ProfSequoiasLab_MovementScript_FaceProf
-# 187 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 200 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	waitmovement 0
-# 188 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 201 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_EventScript_AfterStarter_Text_0
-# 189 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 202 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	call EvergreenTown_ProfSequoiasLab_EventScript_GivePokedex
 	return
 
 
 EvergreenTown_ProfSequoiasLab_EventScript_AfterStarter2::
-# 195 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 208 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	applymovement 1, EvergreenTown_ProfSequoiasLab_MovementScript_AfterStarterCongrats2
-# 196 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 209 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	waitmovement 0
-# 197 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 210 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	applymovement LOCALID_PLAYER, EvergreenTown_ProfSequoiasLab_MovementScript_FaceProf
-# 198 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 211 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	waitmovement 0
-# 199 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 212 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_EventScript_AfterStarter2_Text_0
-# 200 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 213 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	call EvergreenTown_ProfSequoiasLab_EventScript_GivePokedex
 	return
 
 
 EvergreenTown_ProfSequoiasLab_EventScript_AfterStarter3::
-# 206 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 219 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	applymovement 1, EvergreenTown_ProfSequoiasLab_MovementScript_AfterStarterCongrats3
-# 207 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 220 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	waitmovement 0
-# 208 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 221 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	applymovement LOCALID_PLAYER, EvergreenTown_ProfSequoiasLab_MovementScript_FaceProf
-# 209 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 222 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	waitmovement 0
-# 210 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 223 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_EventScript_AfterStarter3_Text_0
-# 211 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 224 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	call EvergreenTown_ProfSequoiasLab_EventScript_GivePokedex
 	return
 
 
 EvergreenTown_ProfSequoiasLab_EventScript_GivePokedex::
-# 217 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
-	msgbox EvergreenTown_ProfSequoiasLab_EventScript_GivePokedex_Text_0
-# 218 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
-	playfanfare MUS_OBTAIN_ITEM
-# 219 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
-	message EvergreenTown_ProfSequoiasLab_EventScript_GivePokedex_Text_1
-# 220 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
-	waitfanfare
-# 221 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
-	closemessage
-# 222 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
-	setflag FLAG_SYS_POKEDEX_GET
-# 223 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
-	setflag FLAG_ADVENTURE_STARTED
-# 224 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
-	special SetUnlockedPokedexFlags
-# 225 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
-	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
-# 226 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
-	setflag FLAG_SYS_NATIONAL_DEX
-# 227 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
-	special EnableNationalPokedex
-# 228 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
-	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 1
-# 229 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
-	setvar VAR_EVERGREEN_TOWN_STATE, 1
 # 230 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	msgbox EvergreenTown_ProfSequoiasLab_EventScript_GivePokedex_Text_0
+# 231 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	playfanfare MUS_OBTAIN_ITEM
+# 232 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	message EvergreenTown_ProfSequoiasLab_EventScript_GivePokedex_Text_1
+# 233 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	waitfanfare
+# 234 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	closemessage
+# 235 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	setflag FLAG_SYS_POKEDEX_GET
+# 236 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	setflag FLAG_ADVENTURE_STARTED
+# 237 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	special SetUnlockedPokedexFlags
+# 238 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
+# 239 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	setflag FLAG_SYS_NATIONAL_DEX
+# 240 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	special EnableNationalPokedex
+# 241 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 1
+# 242 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	setvar VAR_EVERGREEN_TOWN_STATE, 1
+# 243 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_EventScript_GivePokedex_Text_2
 	return
 
 
 EvergreenTown_ProfSequoiasLab_NPCScript_Professor::
-# 237 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 250 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	goto_if_unset FLAG_SYS_POKEMON_GET, EvergreenTown_ProfSequoiasLab_NPCScript_Professor_1
-# 245 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 258 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	compare VAR_EVERGREEN_PROF_STATE, 2
 	goto_if_eq EvergreenTown_ProfSequoiasLab_NPCScript_Professor_2
-# 255 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 268 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	lock
-# 256 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 269 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	faceplayer
-# 257 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 270 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_NPCScript_Professor_Text_2
-# 258 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 271 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	release
 	end
 
 EvergreenTown_ProfSequoiasLab_NPCScript_Professor_1:
-# 239 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 252 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	lock
-# 240 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 253 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	faceplayer
-# 241 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 254 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_NPCScript_Professor_Text_0
-# 242 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 255 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	release
 	end
 
 EvergreenTown_ProfSequoiasLab_NPCScript_Professor_2:
-# 247 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 260 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	lock
-# 248 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 261 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	faceplayer
-# 249 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 262 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_NPCScript_Professor_Text_1
-# 250 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 263 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	release
+	end
+
+
+EvergreenTown_ProfSequoiasLab_NPCScript_Aide::
+# 278 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	lock
+# 279 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	faceplayer
+# 280 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	msgbox EvergreenTown_ProfSequoiasLab_NPCScript_Aide_Text_0
+# 281 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	release
+	end
+
+
+EvergreenTown_ProfSequoiasLab_NPCScript_Rival::
+# 287 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	lock
+# 288 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	faceplayer
+# 289 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	msgbox EvergreenTown_ProfSequoiasLab_NPCScript_Rival_Text_0
+# 290 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	closemessage
+# 291 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	applymovement 5, EvergreenTown_ProfSequoiasLab_MovementScript_FaceBookshelf
+# 292 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	waitmovement 0
+# 293 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	release
 	end
 
 
 EvergreenTown_ProfSequoiasLab_TriggerScript_BackToStarter::
-# 266 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 300 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	lock
-# 267 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 301 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_TriggerScript_BackToStarter_Text_0
-# 268 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 302 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	closemessage
-# 269 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 303 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	applymovement LOCALID_PLAYER, EvergreenTown_ProfSequoiasLab_MovementScript_GetStarter
-# 270 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 304 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	waitmovement 0
-# 271 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 305 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	release
 	end
 
 
+EvergreenTown_ProfSequoiasLab_SignScript_HealingMachine::
+# 312 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	lock
+# 313 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	goto_if_set FLAG_HEAL_MACHINE_USABLE, EvergreenTown_ProfSequoiasLab_SignScript_HealingMachine_2
+# 334 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	msgbox EvergreenTown_ProfSequoiasLab_SignScript_HealingMachine_Text_3
+EvergreenTown_ProfSequoiasLab_SignScript_HealingMachine_1:
+# 336 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	release
+	end
+
+EvergreenTown_ProfSequoiasLab_SignScript_HealingMachine_2:
+# 315 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	msgbox EvergreenTown_ProfSequoiasLab_SignScript_HealingMachine_Text_0, MSGBOX_YESNO
+# 316 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	closemessage
+# 317 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	compare VAR_RESULT, YES
+	goto_if_eq EvergreenTown_ProfSequoiasLab_SignScript_HealingMachine_5
+# 329 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	msgbox EvergreenTown_ProfSequoiasLab_SignScript_HealingMachine_Text_2
+	goto EvergreenTown_ProfSequoiasLab_SignScript_HealingMachine_1
+
+EvergreenTown_ProfSequoiasLab_SignScript_HealingMachine_5:
+# 319 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	special HealPlayerParty
+# 320 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	fadescreen FADE_TO_BLACK
+# 321 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	playfanfare MUS_HEAL
+# 322 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	waitse
+# 323 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	fadescreen FADE_FROM_BLACK
+# 324 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	msgbox EvergreenTown_ProfSequoiasLab_SignScript_HealingMachine_Text_1
+# 325 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	closemessage
+	goto EvergreenTown_ProfSequoiasLab_SignScript_HealingMachine_1
+
+
 EvergreenTown_ProfSequoiasLab_ProcessScript_NicknamePartyMon::
-# 278 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 343 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_ProcessScript_NicknamePartyMon_Text_0, MSGBOX_YESNO
-# 279 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 344 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	hidemonpic
-# 280 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 345 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq EvergreenTown_ProfSequoiasLab_ProcessScript_NicknamePartyMon_2
 EvergreenTown_ProfSequoiasLab_ProcessScript_NicknamePartyMon_1:
-# 285 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 350 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	compare VAR_RESULT, NO
 	goto_if_eq EvergreenTown_ProfSequoiasLab_ProcessScript_NicknamePartyMon_4
 	return
 
 EvergreenTown_ProfSequoiasLab_ProcessScript_NicknamePartyMon_2:
-# 282 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 347 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	call Common_EventScript_GetGiftMonPartySlot
-# 283 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 348 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	call Common_EventScript_NameReceivedPartyMon
 	goto EvergreenTown_ProfSequoiasLab_ProcessScript_NicknamePartyMon_1
 
 EvergreenTown_ProfSequoiasLab_ProcessScript_NicknamePartyMon_4:
-# 287 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 352 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	closemessage
 	return
 
 
 EvergreenTown_ProfSequoiasLab_ProcessScript_NicknameBoxMon::
-# 293 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 358 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	msgbox EvergreenTown_ProfSequoiasLab_ProcessScript_NicknameBoxMon_Text_0, MSGBOX_YESNO
-# 294 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 359 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	hidemonpic
-# 295 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 360 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq EvergreenTown_ProfSequoiasLab_ProcessScript_NicknameBoxMon_2
 EvergreenTown_ProfSequoiasLab_ProcessScript_NicknameBoxMon_1:
-# 299 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 364 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	call Common_EventScript_TransferredToPC
 	return
 
 EvergreenTown_ProfSequoiasLab_ProcessScript_NicknameBoxMon_2:
-# 297 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 362 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	call Common_EventScript_NameReceivedBoxMon
 	goto EvergreenTown_ProfSequoiasLab_ProcessScript_NicknameBoxMon_1
 
 
-# 303 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 368 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 EvergreenTown_ProfSequoiasLab_MovementScript_GreetProf:
-# 305 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 370 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	walk_up
-# 305 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 370 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	walk_up
-# 305 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 370 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	walk_up
-# 305 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 370 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	walk_up
 	step_end
 
-# 308 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 373 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 EvergreenTown_ProfSequoiasLab_MovementScript_ProfShowStarters:
-# 310 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 375 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	walk_up
-# 310 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 375 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	walk_up
-# 311 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 376 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	walk_right
-# 311 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 376 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	walk_right
-# 312 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 377 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	face_left
 	step_end
 
-# 315 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 380 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 EvergreenTown_ProfSequoiasLab_MovementScript_CheckStarters:
-# 317 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 382 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	walk_up
-# 317 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 382 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	walk_up
 	step_end
 
-# 320 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 385 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 EvergreenTown_ProfSequoiasLab_MovementScript_AfterStarterCongrats:
-# 322 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 387 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	walk_left
-# 322 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 387 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	walk_left
 	step_end
 
-# 325 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 390 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 EvergreenTown_ProfSequoiasLab_MovementScript_AfterStarterCongrats2:
-# 327 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 392 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	walk_left
 	step_end
 
-# 330 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 395 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 EvergreenTown_ProfSequoiasLab_MovementScript_AfterStarterCongrats3:
-# 332 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 397 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	face_left
 	step_end
 
-# 335 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 400 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 EvergreenTown_ProfSequoiasLab_MovementScript_FaceProf:
-# 337 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 402 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	face_right
 	step_end
 
-# 340 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 405 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 EvergreenTown_ProfSequoiasLab_MovementScript_GetStarter:
-# 342 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 407 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	walk_up
 	step_end
 
+# 410 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+EvergreenTown_ProfSequoiasLab_MovementScript_FaceBookshelf:
+# 412 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	face_up
+	step_end
+
 EvergreenTown_ProfSequoiasLab_EventScript_ProfGreeting_Text_0:
-# 11 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 24 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	.string "Prof. Sequoia: You're here finally here\n"
 	.string "{PLAYER}, please come say hello!$"
 
 EvergreenTown_ProfSequoiasLab_EventScript_ProfGreeting_Text_1:
-# 15 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 28 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	.string "Thank you for coming to help me. I need\n"
 	.string "to have a package picked up from the\l"
 	.string "Pokemon Center in the town down south.\l"
@@ -549,52 +642,52 @@ EvergreenTown_ProfSequoiasLab_EventScript_ProfGreeting_Text_1:
 	.string "available for you!$"
 
 EvergreenTown_ProfSequoiasLab_EventScript_ProfGreeting_Text_2:
-# 20 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 33 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	.string "Here are the starters I have available.\n"
 	.string "Please choose only one.$"
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_Text_0:
-# 32 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 45 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	.string "Do you want to choose Duskull?$"
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_Text_1:
-# 39 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 52 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	.string "{PLAYER} received Duskull.$"
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_Text_2:
-# 59 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 72 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	.string "No more room.$"
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_Text_3:
-# 65 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 78 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	.string "You didn't choose this Pokemon.$"
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallOne_Text_4:
-# 72 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 85 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	.string "You have already taken a starter.$"
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallTwo_Text_0:
-# 84 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 97 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	.string "Do you want to choose Impidimp?$"
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallTwo_Text_1:
-# 91 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 104 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	.string "{PLAYER} received Impidimp.$"
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallThree_Text_0:
-# 136 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 149 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	.string "Do you want to choose Beldum?$"
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallThree_Text_1:
-# 143 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 156 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	.string "{PLAYER} received Beldum.$"
 
 EvergreenTown_ProfSequoiasLab_EventScript_StarterBallThree_Text_2:
-# 176 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 189 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	.string "You've already taken a starter.$"
 
 EvergreenTown_ProfSequoiasLab_EventScript_AfterStarter_Text_0:
-# 188 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 201 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	.string "Prof. Sequoia: I see you picked Duskull,\n"
 	.string "it's a very solid choice. Defensively,\l"
 	.string "the line fulfills some very useful roles\l"
@@ -607,7 +700,7 @@ EvergreenTown_ProfSequoiasLab_EventScript_AfterStarter_Text_0:
 	.string "the package.$"
 
 EvergreenTown_ProfSequoiasLab_EventScript_AfterStarter2_Text_0:
-# 199 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 212 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	.string "Prof. Sequoia: I see you picked\n"
 	.string "Impidimp, it's a very solid choice. The\l"
 	.string "entire line provides some very good\l"
@@ -620,7 +713,7 @@ EvergreenTown_ProfSequoiasLab_EventScript_AfterStarter2_Text_0:
 	.string "the package.$"
 
 EvergreenTown_ProfSequoiasLab_EventScript_AfterStarter3_Text_0:
-# 210 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 223 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	.string "Prof Sequoia: I see you picked Beldum,\n"
 	.string "it's a very solid choice. Offensively,\l"
 	.string "this line hits like a truck while having\l"
@@ -633,26 +726,26 @@ EvergreenTown_ProfSequoiasLab_EventScript_AfterStarter3_Text_0:
 	.string "the package.$"
 
 EvergreenTown_ProfSequoiasLab_EventScript_GivePokedex_Text_0:
-# 217 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 230 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	.string "Have this Pokedex as well so you can\n"
 	.string "study what you see and gather as\l"
 	.string "complete of an encyclopedia as\l"
 	.string "possible to support your ambitions.$"
 
 EvergreenTown_ProfSequoiasLab_EventScript_GivePokedex_Text_1:
-# 219 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 232 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	.string "{PLAYER} received the Pokedex!$"
 
 EvergreenTown_ProfSequoiasLab_EventScript_GivePokedex_Text_2:
-# 230 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 243 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	.string "Good luck on your task!$"
 
 EvergreenTown_ProfSequoiasLab_NPCScript_Professor_Text_0:
-# 241 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 254 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	.string "Prof. Sequoia: Please pick a starter.$"
 
 EvergreenTown_ProfSequoiasLab_NPCScript_Professor_Text_1:
-# 249 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 262 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	.string "Prof. Sequoia: You still haven't gotten\n"
 	.string "the package yet. What are you doing\l"
 	.string "around here instead of out on the path\l"
@@ -661,7 +754,7 @@ EvergreenTown_ProfSequoiasLab_NPCScript_Professor_Text_1:
 	.string "big machine with the red top.$"
 
 EvergreenTown_ProfSequoiasLab_NPCScript_Professor_Text_2:
-# 257 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 270 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	.string "Prof. Sequoia: How's your journey\n"
 	.string "going? If you need any technical help\l"
 	.string "please don't hesitate to ask. Also, if\l"
@@ -669,16 +762,49 @@ EvergreenTown_ProfSequoiasLab_NPCScript_Professor_Text_2:
 	.string "be of help to you, I'll make sure to call\l"
 	.string "you.$"
 
+EvergreenTown_ProfSequoiasLab_NPCScript_Aide_Text_0:
+# 280 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	.string "I assist the professor in managing his\n"
+	.string "large amounts of data. It's really nice\l"
+	.string "to get to see a lot of the information\l"
+	.string "that comes through here.$"
+
+EvergreenTown_ProfSequoiasLab_NPCScript_Rival_Text_0:
+# 289 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	.string "Jackson: What's up, {PLAYER}! I'm just\n"
+	.string "reading up on some strategies while you\l"
+	.string "run your errand.\p"
+	.string "I'll be much better prepared for our\n"
+	.string "next battle!$"
+
 EvergreenTown_ProfSequoiasLab_TriggerScript_BackToStarter_Text_0:
-# 267 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 301 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	.string "Prof. Sequoia: What are you doing? You\n"
 	.string "still need to grab a starter before you\l"
 	.string "leave.$"
 
+EvergreenTown_ProfSequoiasLab_SignScript_HealingMachine_Text_0:
+# 315 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	.string "This is the healing machine the\n"
+	.string "professor mentioned, do you want to\l"
+	.string "heal?$"
+
+EvergreenTown_ProfSequoiasLab_SignScript_HealingMachine_Text_1:
+# 324 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	.string "Your Pokemon are now healed!$"
+
+EvergreenTown_ProfSequoiasLab_SignScript_HealingMachine_Text_2:
+# 329 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	.string "At least this is here...$"
+
+EvergreenTown_ProfSequoiasLab_SignScript_HealingMachine_Text_3:
+# 334 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+	.string "You can't use this machine right now.$"
+
 EvergreenTown_ProfSequoiasLab_ProcessScript_NicknamePartyMon_Text_0:
-# 278 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 343 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	.string "Give it a nickname?$"
 
 EvergreenTown_ProfSequoiasLab_ProcessScript_NicknameBoxMon_Text_0:
-# 293 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
+# 358 "data/maps/EvergreenTown_ProfSequoiasLab/scripts.pory"
 	.string "Give ite a nickname?$"
